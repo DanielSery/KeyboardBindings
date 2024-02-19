@@ -134,7 +134,13 @@ RMapping(firstKey, secondKey)
 $r::MapKey("r", "r", RMapping)
 $+r::MapKey("r", "R", DefaultMapping)
 
-TMapping(firstKey, secondKey)
+$t::MapKey("t", "t", DefaultMapping)
+$+t::MapKey("t", "T", DefaultMapping)
+
+$y::MapKey("y", "y", DefaultMapping)
+$+y::MapKey("y", "Y", DefaultMapping)
+
+UMapping(firstKey, secondKey)
 {
     if (secondKey = "r") 
         return "^u^r"
@@ -153,13 +159,7 @@ TMapping(firstKey, secondKey)
     return ""
 }
 
-$t::MapKey("t", "t", TMapping)
-$+t::MapKey("t", "T", DefaultMapping)
-
-$y::MapKey("y", "y", DefaultMapping)
-$+y::MapKey("y", "Y", DefaultMapping)
-
-$u::MapKey("u", "u", DefaultMapping)
+$u::MapKey("u", "u", UMapping)
 $+u::MapKey("u", "U", DefaultMapping)
 
 $i::MapKey("i", "i", DefaultMapping)
@@ -198,18 +198,20 @@ PMapping(firstKey, secondKey)
 $p::MapKey("p", "p", PMapping)
 $+p::MapKey("p", "P", DefaultMapping)
 
-$[::MapKey("`[", "`[", DefaultMapping)
-$+[::MapKey("`[", "{{}", DefaultMapping)
+$[::MapKey("[", "[", DefaultMapping)
+$+[::MapKey("[", "{{}", DefaultMapping)
 
-$]::MapKey("`]", "`]", DefaultMapping)
-$+]::MapKey("`]", "{}}", DefaultMapping)
+$]::MapKey("]", "]", DefaultMapping)
+$+]::MapKey("]", "{}}", DefaultMapping)
 
 AMapping(firstKey, secondKey)
 {
     if (secondKey = "w") 
-        return "!{right}"
+        return "^!{right}"
     if (secondKey = "e") 
-        return "!{right}"
+        return "^!{right}"
+    if (secondKey = "b") 
+        return "^!{left}"
     if (secondKey = "j") 
         return "{left}"
     if (secondKey = "k") 
@@ -218,6 +220,14 @@ AMapping(firstKey, secondKey)
         return "{down}"
     if (secondKey = ";")
         return "{right}"
+    if (secondKey = "u") 
+        return "!{left}"
+    if (secondKey = "i") 
+        return "^+{F3}"
+    if (secondKey = "o") 
+        return "^{F3}"
+    if (secondKey = "p") 
+        return "!{right}"
     if (secondKey = "m") 
         return "^{left}"
     if (secondKey = ",")
@@ -237,9 +247,11 @@ $+a::MapKey("a", "A", DefaultMapping)
 SMapping(firstKey, secondKey)
 {
     if (secondKey = "w") 
-        return "!+{right}"
+        return "^!+{right}"
     if (secondKey = "e") 
-        return "!+{right}"
+        return "^!+{right}"
+    if (secondKey = "b") 
+        return "^!+{left}"
     if (secondKey = "j") 
         return "+{left}"
     if (secondKey = "k") 
@@ -267,25 +279,27 @@ $+s::MapKey("s", "S", DefaultMapping)
 DMapping(firstKey, secondKey)
 {
     if (secondKey = "w") 
-        return "!+{right}{Delete}"
+        return "^!+{right}{Delete}"
     if (secondKey = "e") 
-        return "!+{right}{Delete}"
+        return "^!+{right}{Delete}"
+    if (secondKey = "b") 
+        return "^!+{left}{Delete}"
     if (secondKey = "j") 
-        return "+{left}{Delete}"
+        return "{Backspace}"
     if (secondKey = "k") 
         return "+{up}{Delete}"
     if (secondKey = "l") 
         return "+{down}{Delete}"
     if (secondKey = ";")
-        return "+{right}{Delete}"
+        return "{Delete}"
     if (secondKey = "m") 
-        return "^+{left}{Delete}"
+        return "^{Backspace}"
     if (secondKey = ",")
         return "^+{up}{Delete}"
     if (secondKey = ".") 
         return "^+{down}{Delete}"
     if (secondKey = "/")
-        return "^+{right}{Delete}"
+        return "^{Delete}"
     if (secondKey = " ")
         return "^" firstKey
     return ""
@@ -374,8 +388,8 @@ $+k::MapKey("k", "K", DefaultMapping)
 $l::MapKey("l", "l", DefaultMapping)
 $+l::MapKey("l", "L", DefaultMapping)
 
-$;::MapKey("`;", "`;", DefaultMapping)
-$+;::MapKey("`;", "`:", DefaultMapping)
+$;::MapKey(";", ";", DefaultMapping)
+$+;::MapKey(";", ":", DefaultMapping)
 
 $'::MapKey("`'", "`'", DefaultMapping)
 $+'::MapKey("`'", "`"", DefaultMapping)
@@ -475,14 +489,16 @@ SpaceMapping(firstKey, secondKey)
         return "^+,"
     if (secondKey = ";") 
         return "^+."
+    if (secondKey = "a")
+        return "^{Enter}"
     if (secondKey = "e")
         return "{Enter}"
     if (secondKey = "k")
-        return "!{Enter}"
+        return "^+{Enter}"
     if (secondKey = "l")
         return "+{Enter}"
-    if (secondKey = " ")
-        return "^" firstKey
+    if (secondKey = "q")
+        return "{Esc}"
     return ""
 }
 
@@ -532,11 +548,11 @@ MapKey(baseKey, key, mapping)
             while (GetKeyState(firstBaseKey, "P") AND
                 (secondBaseKey = "" OR GetKeyState(secondBaseKey, "P")) AND
                 queue.Length = 0 AND
-                (combinationHandling OR NOT repeatedHandling OR A_TickCount - startTime < 50))
+                (combinationHandling OR NOT repeatedHandling OR A_TickCount - startTime < 100))
             {
-                Sleep(20)
+                Sleep(10)
 
-                if (A_TickCount - startTime > 500)
+                if (A_TickCount - startTime > 700)
                 {
                     repeatedHandling := True
                     break
@@ -563,7 +579,15 @@ MapKey(baseKey, key, mapping)
             specialResult := mapping.Call(firstKey, releasedKey)
             if (releasedKey = "")
             {
-                if (secondKey != "")
+                if (queue.Length > 0 AND combinationHandling)
+                {
+                    while (queue.Length > 0)
+                    {
+                        Send queue.Pop()
+                    }
+                    return
+                }
+                else if (secondKey != "")
                 {
                     specialResult := mapping.Call(firstKey, secondKey)
                     Send specialResult
@@ -586,6 +610,14 @@ MapKey(baseKey, key, mapping)
                     Send releasedKey
                 }
                 
+                return
+            }
+            else if (queue.Length > 0 AND combinationHandling)
+            {
+                while (queue.Length > 0)
+                {
+                    Send queue.Pop()
+                }
                 return
             }
             else if (queue.Length > 0)
