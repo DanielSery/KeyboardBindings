@@ -693,50 +693,53 @@ MapKey(baseKey, key, mapping)
                 
                 return
             }
-            else if (queue.Length > 0 AND combinationHandling)
-            {
-                while (queue.Length > 0)
-                {
-                    Send queue.Pop()
-                }
-                return
-            }
-            else if (queue.Length > 0)
-            {
-                Send firstKey
-                Send secondKey
-                while (queue.Length > 0)
-                {
-                    Send queue.Pop()
-                }
-                return
-            }
-            else if (specialResult != "" AND repeatedHandling = False)
-            { 
-                Send specialResult
-                secondKey := ""
-                secondBaseKey := ""
-                combinationHandling := True
-                releasedKey := ""
-            }
-            else if (specialResult != "")
-            { 
-                secondKey := ""
-                secondBaseKey := ""
-                combinationHandling := True
-                releasedKey := ""
-                repeatedHandling := False
-            }
-            else if (releasedKey == " ")
-            {
-                Send "^" firstKey
-                return
-            }
             else
             {
-                Send firstKey
-                Send secondKey
-                return
+                if (queue.Length > 0 AND combinationHandling)
+                {
+                    while (queue.Length > 0)
+                    {
+                        Send queue.Pop()
+                    }
+                    return
+                }
+                else if (queue.Length > 0)
+                {
+                    Send firstKey
+                    Send secondKey
+                    while (queue.Length > 0)
+                    {
+                        Send queue.Pop()
+                    }
+                    return
+                }
+                else if (specialResult != "" AND repeatedHandling = False)
+                { 
+                    Send specialResult
+                    secondKey := ""
+                    secondBaseKey := ""
+                    combinationHandling := True
+                    releasedKey := ""
+                }
+                else if (specialResult != "")
+                { 
+                    secondKey := ""
+                    secondBaseKey := ""
+                    combinationHandling := True
+                    releasedKey := ""
+                    repeatedHandling := False
+                }
+                else if (releasedKey == " ")
+                {
+                    Send "^" firstKey
+                    return
+                }
+                else
+                {
+                    Send firstKey
+                    Send secondKey
+                    return
+                }
             }
         }
     }
