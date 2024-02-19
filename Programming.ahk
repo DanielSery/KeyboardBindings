@@ -619,11 +619,11 @@ MapKey(baseKey, key, mapping)
             while (GetKeyState(firstBaseKey, "P") AND
                 (secondBaseKey = "" OR GetKeyState(secondBaseKey, "P")) AND
                 queue.Length = 0 AND
-                (combinationHandling OR NOT repeatedHandling OR A_TickCount - startTime < 100))
+                (NOT repeatedHandling OR A_TickCount - startTime < 100))
             {
                 Sleep(10)
 
-                if (A_TickCount - startTime > 700)
+                if (A_TickCount - startTime > 400)
                 {
                     repeatedHandling := True
                     break
@@ -650,17 +650,27 @@ MapKey(baseKey, key, mapping)
             specialResult := mapping.Call(firstKey, releasedKey)
             if (releasedKey = "")
             {
-                if (queue.Length > 0 AND combinationHandling)
+                if (queue.Length > 0 AND NOT combinationHandling)
                 {
+                    Send firstKey
+                    Send secondKey
                     while (queue.Length > 0)
                     {
                         Send queue.Pop()
                     }
                     return
                 }
+                else if (queue.Length > 0 AND combinationHandling)
+                {
+                    while (queue.Length > 0)
+                    {
+                         Send queue.Pop()
+                    }
+                    return
+                }
                 else if (secondKey != "")
                 {
-                    specialResult := mapping.Call(firstKey, secondKey)
+                    specialResult := mapping.Call(firstKey, secondKey) 
                     Send specialResult
                     combinationHandling := True
                 }
@@ -701,9 +711,16 @@ MapKey(baseKey, key, mapping)
                 }
                 return
             }
-            else if (specialResult != "")
-            {
+            else if (specialResult != "" AND repeatedHandling = False)
+            { 
                 Send specialResult
+                secondKey := ""
+                secondBaseKey := ""
+                combinationHandling := True
+                releasedKey := ""
+            }
+            else if (specialResult != "")
+            { 
                 secondKey := ""
                 secondBaseKey := ""
                 combinationHandling := True
