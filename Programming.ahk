@@ -41,14 +41,14 @@ $+0::MapKey("0", "{)}", DiscardingMapping)
 
 $-::MapKey("-", "-", DefaultMapping)
 $+-::MapKey("-", "{_}", DiscardingMapping)
-
+ 
 $=::MapKey("=", "=", DefaultMapping)
 $+=::MapKey("=", "{+}", DiscardingMapping)
 
 QMapping(firstKey, secondKey)
 {
     if (secondKey = " ")
-        return "{Esc}"
+        return "!{F4}"
     return ""
 }
 
@@ -139,6 +139,8 @@ EMapping(firstKey, secondKey)
         return "`\"
     if (secondKey = "/")
         return "`|"
+    if (secondKey = " ")
+        return "{Esc}"
     return ""
 }
 
@@ -260,14 +262,6 @@ AMapping(firstKey, secondKey)
         return "{down}"
     if (secondKey = ";")
         return "{right}"
-    if (secondKey = "u") 
-        return "!{left}"
-    if (secondKey = "i") 
-        return "^+{F3}"
-    if (secondKey = "o") 
-        return "^{F3}"
-    if (secondKey = "p") 
-        return "!{right}"
     if (secondKey = "m") 
         return "^{left}"
     if (secondKey = ",")
@@ -388,16 +382,32 @@ GMapping(firstKey, secondKey)
         return "^n^i"
     if (secondKey = "a")
         return "^i^o"
-    if (secondKey = "s") 
+    if (secondKey = "b") 
         return "^n^b"
     if (secondKey = "d")
         return "^n^d"
     if (secondKey = "h") 
         return "^n^h"
-    if (secondKey = "l")
+    if (secondKey = "s")
         return "^n^l"
     if (secondKey = "c")
         return "^i^i"
+    if (secondKey = "j") 
+        return "!{left}"
+    if (secondKey = "k") 
+        return "^+{F3}"
+    if (secondKey = "l") 
+        return "^{F3}"
+    if (secondKey = ";") 
+        return "!{right}"
+    if (secondKey = "m") 
+        return "^+{left}"
+    if (secondKey = ",") 
+        return "^+{up}"
+    if (secondKey = ".") 
+        return "^+{down}"
+    if (secondKey = "/") 
+        return "^+{right}"
     return ""
 }
 
@@ -482,14 +492,7 @@ $+\::MapKey("`\", "`|", DiscardingMapping)
 $z::MapKey("z", "z", DefaultMapping)
 $+z::MapKey("z", "Z", DefaultMapping)
 
-XMapping(firstKey, secondKey)
-{
-    if (secondKey = " ")
-        return "!{F4}"
-    return ""
-}
-
-$x::MapKey("x", "x", XMapping)
+$x::MapKey("x", "x", DefaultMapping)
 $+x::MapKey("x", "X", DefaultMapping)
 
 $c::MapKey("c", "c", DefaultMapping)
@@ -632,7 +635,7 @@ MapKey(baseKey, key, mapping)
             {
                 Sleep(10)
 
-                if (A_TickCount - startTime > 400)
+                if (A_TickCount - startTime > 600)
                 {
                     repeatedHandling := True
                     break
