@@ -259,6 +259,9 @@ DMapping(firstKey, secondKey)
     if (secondKey = "/")
         return "^{Delete}"
 
+    if (secondKey = "{Enter}")
+        return "{Delete}"
+
     if (secondKey = " ")
         return "^" firstKey
 
