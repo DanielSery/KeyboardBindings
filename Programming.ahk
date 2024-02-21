@@ -1,4 +1,4 @@
-#Requires AutoHotkey v2.0
+﻿#Requires AutoHotkey v2.0
 
 global firstKey := ""
 global firstBaseKey := ""
@@ -194,8 +194,6 @@ SMapping(firstKey, secondKey)
     if (secondKey = "j") 
         return "+{left}"
     if (secondKey = "k") 
-        return "+{up}"
-    if (secondKey = "l") 
         return "+{down}"
     if (secondKey = ";")
         return "+{right}"
@@ -584,10 +582,10 @@ SemiMapping(firstKey, secondKey)
     if (secondKey = "Y")
         return "ý"
 
-    if (secondKey = "@") 
-        return "v"
-    if (secondKey = "\") 
-        return "b"
+    if (secondKey = "v")
+        return "@"
+    if (secondKey = "b") 
+        return "\"
     if (secondKey = "n")
         return "{asc 0160}"
 
@@ -760,15 +758,15 @@ SpaceMapping(firstKey, secondKey)
     if (secondKey = "b")
         return "&"
     if (secondKey = "v")
-        return "!"
+        return "{!}"
     
     if (secondKey = "z")
         return "{_}"
 
     if (secondKey = "x")
-        return "$"
+        return "{$}"
     if (secondKey = "c")
-        return "#"
+        return "{#}"
     
     if (secondKey = "n")
         return "0"
@@ -796,14 +794,14 @@ SpaceMapping(firstKey, secondKey)
     if (secondKey = ";")
         return "="
     if (secondKey = "p")
-        return "+"
+        return "{+}"
     if (secondKey = "{Backspace}")
         return "*"
     if (secondKey = "{Enter}")
         return "/"
 
     if (secondKey = "y")
-        return "^"
+        return "{^}"
     if (secondKey = "h")
         return "%"
 
