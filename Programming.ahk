@@ -810,6 +810,8 @@ ControlMapping(firstKey, secondKey)
         return "^/"
     if (secondKey = "{Enter}")
         return "^{Enter}"
+    if (secondKey = "{Delete}")
+        return "^{Delete}"
 
     return ""
 }
