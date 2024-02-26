@@ -537,13 +537,6 @@ SemiMapping(firstKey, secondKey)
     if (secondKey = "Y")
         return "ý"
 
-    if (secondKey = "v")
-        return "@"
-    if (secondKey = "b") 
-        return "\"
-    if (secondKey = "n")
-        return "{asc 0160}"
-
     return ""
 }
 
@@ -824,75 +817,60 @@ $+'::MapKey("`'", "{Enter}", ControlMapping)
 
 SpaceMapping(firstKey, secondKey)
 {
-    if (secondKey = "a") 
+    if (secondKey = "j") 
         return "(" 
-    if (secondKey = "s") 
+    if (secondKey = "k") 
         return ")" 
-    if (secondKey = "d") 
+    if (secondKey = "l") 
         return "{[}"
-    if (secondKey = "f")
+    if (secondKey = ";")
         return "{]}"
-    if (secondKey = "q")
+    if (secondKey = "u")
         return "{{}"
-    if (secondKey = "w")
+    if (secondKey = "i")
         return "{}}"
-    if (secondKey = "e")
+    if (secondKey = "o")
         return "`""
-    if (secondKey = "r")
+    if (secondKey = "p")
         return "`'"
-    if (secondKey = "t")
+    if (secondKey = "{Backspace}")
         return "``"
+
+    if (secondKey = "v")
+        return "-"
+    if (secondKey = "f")
+        return "="
+    if (secondKey = "r")
+        return "{+}"
+    if (secondKey = "e")
+        return "*"
+    if (secondKey = "c")
+        return "/"
+    if (secondKey = "x")
+        return "%"
+    if (secondKey = "w")
+        return "{^}"
+
     if (secondKey = "g")
+        return "{!}"
+    if (secondKey = "t")
         return "`|"
     if (secondKey = "b")
         return "&"
-    if (secondKey = "v")
-        return "{!}"
-    
-    if (secondKey = "z")
-        return "{_}"
 
-    if (secondKey = "x")
+    if (secondKey = "a")
         return "{$}"
-    if (secondKey = "c")
+    if (secondKey = "q")
         return "{#}"
-    
-    if (secondKey = "n")
-        return "0"
-    if (secondKey = "m")
-        return "1"
-    if (secondKey = ",")
-        return "2"
-    if (secondKey = ".")
-        return "3"
-    if (secondKey = "j")
-        return "4"
-    if (secondKey = "k")
-        return "5"
-    if (secondKey = "l")
-        return "6"
-    if (secondKey = "u")
-        return "7"
-    if (secondKey = "i")
-        return "8"
-    if (secondKey = "o")
-        return "9"
+    if (secondKey = "z")
+        return "@"
 
-    if (secondKey = "/")
-        return "-"
-    if (secondKey = ";")
-        return "="
-    if (secondKey = "p")
-        return "{+}"
-    if (secondKey = "{Backspace}")
-        return "*"
-    if (secondKey = "{Enter}")
-        return "/"
-
-    if (secondKey = "y")
-        return "{^}"
     if (secondKey = "h")
-        return "%"
+        return "{_}"
+    if (secondKey = "/") 
+        return "\"
+    if (secondKey = "n")
+        return "{asc 0160}"
 
     return ""
 }
