@@ -182,6 +182,8 @@ ActionMapping(firstKey, secondKey)
         return "#+{s}"
     if (secondKey = "e")
         return "{Esc}"
+    if (secondKey = "p")
+        return "^+{Esc}"
     if (secondKey = "t")
         return "!{Tab}"
     if (secondKey = "l")
