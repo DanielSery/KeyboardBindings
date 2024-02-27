@@ -694,6 +694,11 @@ WindowsShiftMapping(firstKey, secondKey)
 
 ControlMapping(firstKey, secondKey)
 {
+    if (secondKey = "{Tab}")
+        return "!{Click}"
+    if (secondKey = "{Delete}")
+        return "^{Click}"
+
     return ModificatorMapping(firstKey, secondKey, "^")
 }
 
