@@ -8,55 +8,192 @@ global queue := []
 
 $`::MapKey("``", "``", DefaultMapping)
 $+`::MapKey("``", "{~}", DefaultMapping)
+$Tab::MapKey("Tab", "{Tab}", WindowsMapping)
+$+Tab::MapKey("Tab", "+{Tab}", WindowsMapping)
+$CapsLock::MapKey("CapsLock", "{Delete}", ActionMapping)
+$+CapsLock::MapKey("CapsLock", "{Delete}", ActionMapping)
 
 $1::MapKey("1", "1", DefaultMapping)
 $+1::MapKey("1", "{!}", DefaultMapping)
+$q::MapKey("q", "q", VovelsMapping)
+$+q::MapKey("q", "Q", VovelsMapping)
+$a::MapKey("a", "a", MoveMapping)
+$+a::MapKey("a", "A", MoveMapping)
+$z::MapKey("z", "z", DefaultMapping)
+$+z::MapKey("z", "Z", DefaultMapping)
 
 $2::MapKey("2", "2", DefaultMapping)
 $+2::MapKey("2", "{@}", DefaultMapping)
+$w::MapKey("w", "w", ConsonantsMapping)
+$+w::MapKey("w", "W", ConsonantsMapping)
+$s::MapKey("s", "s", SelectMapping)
+$+s::MapKey("s", "S", SelectMapping)
+$x::MapKey("x", "x", DefaultMapping)
+$+x::MapKey("x", "X", DefaultMapping)
 
 $3::MapKey("3", "3", DefaultMapping)
 $+3::MapKey("3", "{#}", DefaultMapping)
+$e::MapKey("e", "e", DefaultMapping)
+$+e::MapKey("e", "E", DefaultMapping)
+$d::MapKey("d", "d", DeleteMapping)
+$+d::MapKey("d", "D", DeleteMapping)
+$c::MapKey("c", "c", DefaultMapping)
+$+c::MapKey("c", "C", DefaultMapping)
 
 $4::MapKey("4", "4", DefaultMapping)
 $+4::MapKey("4", "{$}", DefaultMapping)
+$r::MapKey("r", "r", RefactorMapping)
+$+r::MapKey("r", "R", RefactorMapping)
+$f::MapKey("f", "f", SpecialMapping)
+$+f::MapKey("f", "F", SpecialMapping)
+$v::MapKey("v", "v", NumericMapping)
+$+v::MapKey("v", "V", NumericMapping)
 
 $5::MapKey("5", "5", DefaultMapping)
 $+5::MapKey("5", "{%}", DefaultMapping)
+$t::MapKey("t", "t", DefaultMapping)
+$+t::MapKey("t", "T", DefaultMapping)
+$g::MapKey("g", "g", GotoMapping)
+$+g::MapKey("g", "G", GotoMapping)
+$b::MapKey("b", "b", BuildMapping)
+$+b::MapKey("b", "B", BuildMapping)
 
 $6::MapKey("6", "6", DefaultMapping)
 $+6::MapKey("6", "{^}", DefaultMapping)
+$y::MapKey("y", "y", DefaultMapping)
+$+y::MapKey("y", "Y", DefaultMapping)
+$h::MapKey("h", "h", DefaultMapping)
+$+h::MapKey("h", "H", DefaultMapping)
+$n::MapKey("n", "n", DefaultMapping)
+$+n::MapKey("n", "N", DefaultMapping)
 
 $7::MapKey("7", "7", DefaultMapping)
 $+7::MapKey("7", "{&}", DefaultMapping)
+$u::MapKey("u", "u", UnitTestMapping)
+$+u::MapKey("u", "U", UnitTestMapping)
+$j::MapKey("j", "j", SpecialMapping)
+$+j::MapKey("j", "J", SpecialMapping)
+$m::MapKey("m", "m", DefaultMapping)
+$+M::MapKey("m", "M", DefaultMapping)
 
 $8::MapKey("8", "8", DefaultMapping)
 $+8::MapKey("8", "{*}", DefaultMapping)
+$i::MapKey("i", "i", ProcessInspectionMapping)
+$+i::MapKey("i", "I", ProcessInspectionMapping)
+$k::MapKey("k", "k", SourceControlMapping)
+$+k::MapKey("k", "K", SourceControlMapping)
+$,::MapKey(",", ",", DefaultMapping)
+$+,::MapKey(",", "<", DefaultMapping)
 
 $9::MapKey("9", "9", DefaultMapping)
 $+9::MapKey("9", "{(}", DefaultMapping)
+$o::MapKey("o", "o", ConsonantsMapping)
+$+o::MapKey("o", "O", ConsonantsMapping)
+$l::MapKey("l", "l", DefaultMapping)
+$+l::MapKey("l", "L", DefaultMapping)
+$.::MapKey(".", ".", DefaultMapping)
+$+.::MapKey(".", ">", DefaultMapping)
 
 $0::MapKey("0", "0", DefaultMapping)
 $+0::MapKey("0", "{)}", DefaultMapping)
+$p::MapKey("p", "p", VovelsMapping)
+$+p::MapKey("p", "P", VovelsMapping)
+$;::MapKey(";", ";", DefaultMapping)
+$+;::MapKey(";", ":", DefaultMapping)
+$/::MapKey("/", "/", DefaultMapping)
+$+?::MapKey("/", "?", DefaultMapping)
+
+$[::MapKey("[", "{Backspace}", WindowsMapping)
+$+[::MapKey("[", "{{}", WindowsMapping)
+$'::MapKey("`'", "{Enter}", ActionMapping)
+$+'::MapKey("`'", "{Enter}", ActionMapping)
+
+$Space::MapKey(" ", " ", ControlMapping)
+$Enter::MapKey("Enter", "{Enter}", DefaultMapping)
 
 $-::MapKey("-", "-", DefaultMapping)
 $+-::MapKey("-", "{_}", DefaultMapping)
- 
 $=::MapKey("=", "=", DefaultMapping)
 $+=::MapKey("=", "{+}", DefaultMapping)
+$]::MapKey("]", "]", DefaultMapping)
+$+]::MapKey("]", "{}}", DefaultMapping)
+$\::MapKey("`\", "`\", DefaultMapping)
+$+\::MapKey("`\", "`|", DefaultMapping)
 
-QMapping(firstKey, secondKey)
+SpecialMapping(firstKey, secondKey)
 {
-    if (secondKey = " ")
-        return "!{F4}"
+    if (secondKey = "j") 
+        return "(" 
+    if (secondKey = "k") 
+        return ")" 
+    if (secondKey = "l") 
+        return "{[}"
+    if (secondKey = ";")
+        return "{]}"
+    if (secondKey = "u")
+        return "{{}"
+    if (secondKey = "i")
+        return "{}}"
+    if (secondKey = "o")
+        return "`""
+    if (secondKey = "p")
+        return "`'"
+    if (secondKey = "{Backspace}")
+        return "``"
+
+    if (secondKey = "a")
+        return "{!}"
+    if (secondKey = "q")
+        return "`|"
+    if (secondKey = "z")
+        return "&"
+
+    if (secondKey = "s")
+        return "{@}"
+
+    if (secondKey = "d")
+        return "{#}"
+
+    if (secondKey = "f")
+        return "{$}"
+
+    if (secondKey = "h")
+        return "{_}"
+
+    if (secondKey = "/") 
+        return "\"
+
+    if (secondKey = "n")
+        return "{asc 0160}"
 
     return ""
 }
 
-$q::MapKey("q", "q", QMapping)
-$+q::MapKey("q", "Q", DefaultMapping)
+ActionMapping(firstKey, secondKey)
+{
+    if (secondKey = "q")
+        return "{F4}"
+    if (secondKey = "w")
+        return "{LWin}"
+    if (secondKey = "s")
+        return "#+{s}"
+    if (secondKey = "e")
+        return "{Esc}"
+    if (secondKey = "t")
+        return "!{Tab}"
+    if (secondKey = "m") 
+        return "{Volume_Mute}"
+    if (secondKey = ",")
+        return "{Volume_Up}"
+    if (secondKey = ".")
+        return "{Volume_Down}"
+    if (secondKey = "p")
+        return "{PrtSc}"
 
-AMapping(firstKey, secondKey)
+    return ""
+}
+
+MoveMapping(firstKey, secondKey)
 {
     if (secondKey = "w")
         return "^!{right}"
@@ -84,13 +221,61 @@ AMapping(firstKey, secondKey)
     return ""
 }
 
-$a::MapKey("a", "a", AMapping)
-$+a::MapKey("a", "A", DefaultMapping)
+SelectMapping(firstKey, secondKey)
+{
+    if (secondKey = "w") 
+        return "^!+{right}"
+    if (secondKey = "e") 
+        return "^!+{right}"
+    if (secondKey = "b") 
+        return "^!+{left}"
+    if (secondKey = "j") 
+        return "+{left}"
+    if (secondKey = "k") 
+        return "+{down}"
+    if (secondKey = ";")
+        return "+{right}"
+    if (secondKey = "m") 
+        return "^+{left}"
+    if (secondKey = ",")
+        return "^+{up}"
+    if (secondKey = ".") 
+        return "^+{down}"
+    if (secondKey = "/")
+        return "^+{right}"
 
-$z::MapKey("z", "z", DefaultMapping)
-$+z::MapKey("z", "Z", DefaultMapping)
+    return ""
+}
 
-WMapping(firstKey, secondKey)
+DeleteMapping(firstKey, secondKey)
+{
+    if (secondKey = "w") 
+        return "^!+{right}{Delete}"
+    if (secondKey = "e") 
+        return "^!+{right}{Delete}"
+    if (secondKey = "b") 
+        return "^!+{left}{Delete}"
+    if (secondKey = "j") 
+        return "{Backspace}"
+    if (secondKey = "k") 
+        return "+{up}{Delete}"
+    if (secondKey = "l") 
+        return "+{down}{Delete}"
+    if (secondKey = ";")
+        return "{Delete}"
+    if (secondKey = "m") 
+        return "^{Backspace}"
+    if (secondKey = ",")
+        return "^+{up}{Delete}"
+    if (secondKey = ".") 
+        return "^+{down}{Delete}"
+    if (secondKey = "/")
+        return "^{Delete}"
+
+    return ""
+}
+
+WindowsMapping(firstKey, secondKey)
 {
     if (secondKey = "q") 
         return "#q"
@@ -165,98 +350,10 @@ WMapping(firstKey, secondKey)
     if (secondKey = "0")
         return "#0"
 
-    if (secondKey = " ")
-        return "{LWin}"
-
     return ""
 }
 
-$w::MapKey("w", "w", WMapping)
-$+w::MapKey("w", "W", DefaultMapping)
-
-SMapping(firstKey, secondKey)
-{
-    if (secondKey = "w") 
-        return "^!+{right}"
-    if (secondKey = "e") 
-        return "^!+{right}"
-    if (secondKey = "b") 
-        return "^!+{left}"
-    if (secondKey = "j") 
-        return "+{left}"
-    if (secondKey = "k") 
-        return "+{down}"
-    if (secondKey = ";")
-        return "+{right}"
-    if (secondKey = "m") 
-        return "^+{left}"
-    if (secondKey = ",")
-        return "^+{up}"
-    if (secondKey = ".") 
-        return "^+{down}"
-    if (secondKey = "/")
-        return "^+{right}"
-    if (secondKey = " ")
-        return "#+{s}"
-
-    return ""
-}
-
-$s::MapKey("s", "s", SMapping)
-$+s::MapKey("s", "S", DefaultMapping)
-
-$x::MapKey("x", "x", DefaultMapping)
-$+x::MapKey("x", "X", DefaultMapping)
-
-EMapping(firstKey, secondKey)
-{
-    if (secondKey = " ")
-        return "{Esc}"
-
-    return ""
-}
-
-$e::MapKey("e", "e", EMapping)
-$+e::MapKey("e", "E", DefaultMapping)
-
-DMapping(firstKey, secondKey)
-{
-    if (secondKey = "w") 
-        return "^!+{right}{Delete}"
-    if (secondKey = "e") 
-        return "^!+{right}{Delete}"
-    if (secondKey = "b") 
-        return "^!+{left}{Delete}"
-    if (secondKey = "j") 
-        return "{Backspace}"
-    if (secondKey = "k") 
-        return "+{up}{Delete}"
-    if (secondKey = "l") 
-        return "+{down}{Delete}"
-    if (secondKey = ";")
-        return "{Delete}"
-    if (secondKey = "m") 
-        return "^{Backspace}"
-    if (secondKey = ",")
-        return "^+{up}{Delete}"
-    if (secondKey = ".") 
-        return "^+{down}{Delete}"
-    if (secondKey = "/")
-        return "^{Delete}"
-
-    if (secondKey = " ")
-        return "{Delete}"
-
-    return ""
-}
-
-$d::MapKey("d", "d", DMapping)
-$+d::MapKey("d", "D", DefaultMapping)
-
-$c::MapKey("c", "c", DefaultMapping)
-$+c::MapKey("c", "C", DefaultMapping)
-
-RMapping(firstKey, secondKey)
+RefactorMapping(firstKey, secondKey)
 {
     if (secondKey = "/") 
         return "!^/" 
@@ -280,27 +377,7 @@ RMapping(firstKey, secondKey)
     return ""
 }
 
-$r::MapKey("r", "r", RMapping)
-$+r::MapKey("r", "R", DefaultMapping)
-
-$f::MapKey("f", "f", DefaultMapping)
-$+f::MapKey("f", "F", DefaultMapping)
-
-$v::MapKey("v", "v", DefaultMapping)
-$+v::MapKey("v", "V", DefaultMapping)
-
-TMapping(firstKey, secondKey)
-{
-    if (secondKey = " ")
-        return "!{Tab}"
-
-    return ""
-}
-
-$t::MapKey("t", "t", TMapping)
-$+t::MapKey("t", "T", DefaultMapping)
-
-GMapping(firstKey, secondKey)
+GotoMapping(firstKey, secondKey)
 {
     if (secondKey = "q") 
         return "^+a"
@@ -344,10 +421,7 @@ GMapping(firstKey, secondKey)
     return ""
 }
 
-$g::MapKey("g", "g", GMapping)
-$+g::MapKey("g", "G", DefaultMapping)
-
-BMapping(firstKey, secondKey)
+BuildMapping(firstKey, secondKey)
 {
     if (secondKey = "c") 
         return "^b^c"
@@ -365,19 +439,7 @@ BMapping(firstKey, secondKey)
     return ""
 }
 
-$b::MapKey("b", "b", BMapping)
-$+b::MapKey("b", "B", DefaultMapping)
-
-$y::MapKey("y", "y", DefaultMapping)
-$+y::MapKey("y", "Y", DefaultMapping)
-
-$h::MapKey("h", "h", DefaultMapping)
-$+h::MapKey("h", "H", DefaultMapping)
-
-$n::MapKey("n", "n", DefaultMapping)
-$+n::MapKey("n", "N", DefaultMapping)
-
-UMapping(firstKey, secondKey)
+UnitTestMapping(firstKey, secondKey)
 {
     if (secondKey = "r") 
         return "^u^r"
@@ -395,27 +457,7 @@ UMapping(firstKey, secondKey)
     return ""
 }
 
-$u::MapKey("u", "u", UMapping)
-$+u::MapKey("u", "U", DefaultMapping)
-
-$j::MapKey("j", "j", DefaultMapping)
-$+j::MapKey("j", "J", DefaultMapping)
-
-MMapping(firstKey, secondKey)
-{
-    if (secondKey = " ") 
-        return "{Volume_Mute}"
-
-    return ""
-}
-
-$m::MapKey("m", "m", MMapping)
-$+M::MapKey("m", "M", DefaultMapping)
-
-$i::MapKey("i", "i", DefaultMapping)
-$+i::MapKey("i", "I", DefaultMapping)
-
-KMapping(firstKey, secondKey)
+SourceControlMapping(firstKey, secondKey)
 {
     if (secondKey = "c") 
         return "^k^c"
@@ -447,38 +489,7 @@ KMapping(firstKey, secondKey)
     return ""
 }
 
-$k::MapKey("k", "k", KMapping)
-$+k::MapKey("k", "K", DefaultMapping)
-
-CommaMapping(firstKey, secondKey)
-{
-    if (secondKey = " ")
-        return "{Volume_Up}"
-
-    return ""
-}
-
-$,::MapKey(",", ",", CommaMapping)
-$+,::MapKey(",", "<", DefaultMapping)
-
-$o::MapKey("o", "o", DefaultMapping)
-$+o::MapKey("o", "O", DefaultMapping)
-
-$l::MapKey("l", "l", DefaultMapping)
-$+l::MapKey("l", "L", DefaultMapping)
-
-DotMapping(firstKey, secondKey)
-{
-    if (secondKey = " ")
-        return "{Volume_Down}"
-
-    return ""
-}
-
-$.::MapKey(".", ".", DotMapping)
-$+.::MapKey(".", ">", DefaultMapping)
-
-PMapping(firstKey, secondKey)
+ProcessInspectionMapping(firstKey, secondKey)
 {
     if (secondKey = "w") 
         return "^d^w"
@@ -501,167 +512,117 @@ PMapping(firstKey, secondKey)
     if (secondKey = "b") 
         return "{F9}"
 
-    if (secondKey = " ")
-        return "{PrtSc}"
-
     return ""
 }
 
-$p::MapKey("p", "p", PMapping)
-$+p::MapKey("p", "P", DefaultMapping)
+NumericMapping(firstKey, secondKey)
+{
+    if (secondKey = "n") 
+        return "0" 
+    if (secondKey = "m") 
+        return "1" 
+    if (secondKey = ",") 
+        return "2" 
+    if (secondKey = ".") 
+        return "3" 
+    if (secondKey = "j") 
+        return "4" 
+    if (secondKey = "k") 
+        return "5" 
+    if (secondKey = "l") 
+        return "6" 
+    if (secondKey = "u") 
+        return "7" 
+    if (secondKey = "i") 
+        return "8" 
+    if (secondKey = "o") 
+        return "9" 
+    
+    if (secondKey = ";") 
+        return "=" 
+    if (secondKey = "p") 
+        return "+" 
+    if (secondKey = "/") 
+        return "-" 
+    if (secondKey = "{Backspace}") 
+        return "*" 
+    if (secondKey = "{Return}") 
+        return "/" 
+    if (secondKey = "y") 
+        return "^" 
+    if (secondKey = "h") 
+        return "%" 
+}
 
-SemiMapping(firstKey, secondKey)
+VovelsMapping(firstKey, secondKey)
 {
     if (secondKey = "a")
         return "á"
     if (secondKey = "A")
-        return "á"
+        return "Á"
     if (secondKey = "e")
         return "é"
     if (secondKey = "E")
-        return "é"
+        return "É"
     if (secondKey = "i")
         return "í"
     if (secondKey = "I")
-        return "í"
+        return "Í"
     if (secondKey = "o")
         return "ó"
     if (secondKey = "O")
-        return "ó"
+        return "Ó"
     if (secondKey = "u")
         return "ú"
     if (secondKey = "U")
-        return "ú"
+        return "Ú"
     if (secondKey = "y")
         return "ý" 
-    if (secondKey = "Y")
-        return "ý"
-
-    return ""
-}
-
-$;::MapKey(";", ";", SemiMapping)
-
-ColumnMapping(firstKey, secondKey)
-{
-    if (secondKey = "a")
-        return "Á"
-    if (secondKey = "A")
-        return "Á"
-    if (secondKey = "e")
-        return "É"
-    if (secondKey = "E")
-        return "É"
-    if (secondKey = "i")
-        return "Í"
-    if (secondKey = "I")
-        return "Í"
-    if (secondKey = "o")
-        return "Ó"
-    if (secondKey = "O")
-        return "Ó"
-    if (secondKey = "u")
-        return "Ú"
-    if (secondKey = "U")
-        return "Ú"
-    if (secondKey = "y")
-        return "Ý" 
     if (secondKey = "Y")
         return "Ý"
 
     return ""
 }
 
-$+;::MapKey(";", ":", ColumnMapping)
-
-SlashMapping(firstKey, secondKey)
+ConsonantsMapping(firstKey, secondKey)
 {
     if (secondKey = "e") 
         return "ě"
     if (secondKey = "E") 
-        return "ě"
+        return "Ě"
     if (secondKey = "r") 
         return "ř"
     if (secondKey = "R") 
-        return "ř"
+        return "Ř"
     if (secondKey = "t") 
         return "ť"
     if (secondKey = "T") 
-        return "ť"
+        return "Ť"
     if (secondKey = "u")
         return "ů"
     if (secondKey = "s") 
         return "š"
     if (secondKey = "S") 
-        return "š"
+        return "Š"
     if (secondKey = "d") 
         return "ď"
     if (secondKey = "D") 
-        return "ď"
+        return "Ď"
     if (secondKey = "z") 
         return "ž"
     if (secondKey = "Z") 
-        return "ž"
+        return "Ž"
     if (secondKey = "c") 
         return "č"
     if (secondKey = "C") 
-        return "č"
+        return "Č"
     if (secondKey = "n") 
         return "ň"
     if (secondKey = "N") 
-        return "ň"
+        return "Ň"
 
     return ""
 }
-
-$/::MapKey("/", "/", SlashMapping)
-
-QuestionMapping(firstKey, secondKey)
-{
-    if (secondKey = "e") 
-        return "Ě"
-    if (secondKey = "E") 
-        return "Ě"
-    if (secondKey = "r") 
-        return "Ř"
-    if (secondKey = "R") 
-        return "Ř"
-    if (secondKey = "t") 
-        return "Ť"
-    if (secondKey = "T") 
-        return "Ť"
-    if (secondKey = "u")
-        return "ů"
-    if (secondKey = "s") 
-        return "Š"
-    if (secondKey = "S") 
-        return "Š"
-    if (secondKey = "d") 
-        return "Ď"
-    if (secondKey = "D") 
-        return "Ď"
-    if (secondKey = "z") 
-        return "Ž"
-    if (secondKey = "Z") 
-        return "Ž"
-    if (secondKey = "c") 
-        return "Č"
-    if (secondKey = "C") 
-        return "Č"
-    if (secondKey = "n") 
-        return "Ň"
-    if (secondKey = "N") 
-        return "Ň"
-
-    return "" 
-}
-$+?::MapKey("/", "?", QuestionMapping)
-
-$]::MapKey("]", "]", DefaultMapping)
-$+]::MapKey("]", "{}}", DefaultMapping)
-
-$\::MapKey("`\", "`\", DefaultMapping)
-$+\::MapKey("`\", "`|", DefaultMapping)
 
 AltMapping(firstKey, secondKey)
 {
@@ -730,12 +691,6 @@ AltMapping(firstKey, secondKey)
 
     return ""
 }
-
-$Tab::MapKey("Tab", "{Tab}", AltMapping)
-$+Tab::MapKey("Tab", "+{Tab}", AltMapping)
-
-$[::MapKey("[", "{Backspace}", AltMapping)
-$+[::MapKey("[", "{{}", AltMapping)
 
 ControlMapping(firstKey, secondKey)
 {
@@ -808,75 +763,6 @@ ControlMapping(firstKey, secondKey)
 
     return ""
 }
-
-$CapsLock::MapKey("CapsLock", "{Delete}", ControlMapping)
-$+CapsLock::MapKey("CapsLock", "{Delete}", ControlMapping)
-
-$'::MapKey("`'", "{Enter}", ControlMapping)
-$+'::MapKey("`'", "{Enter}", ControlMapping)
-
-SpaceMapping(firstKey, secondKey)
-{
-    if (secondKey = "j") 
-        return "(" 
-    if (secondKey = "k") 
-        return ")" 
-    if (secondKey = "l") 
-        return "{[}"
-    if (secondKey = ";")
-        return "{]}"
-    if (secondKey = "u")
-        return "{{}"
-    if (secondKey = "i")
-        return "{}}"
-    if (secondKey = "o")
-        return "`""
-    if (secondKey = "p")
-        return "`'"
-    if (secondKey = "{Backspace}")
-        return "``"
-
-    if (secondKey = "v")
-        return "-"
-    if (secondKey = "f")
-        return "="
-    if (secondKey = "r")
-        return "{+}"
-    if (secondKey = "e")
-        return "*"
-    if (secondKey = "c")
-        return "/"
-    if (secondKey = "x")
-        return "%"
-    if (secondKey = "w")
-        return "{^}"
-
-    if (secondKey = "g")
-        return "{!}"
-    if (secondKey = "t")
-        return "`|"
-    if (secondKey = "b")
-        return "&"
-
-    if (secondKey = "a")
-        return "{$}"
-    if (secondKey = "q")
-        return "{#}"
-    if (secondKey = "z")
-        return "@"
-
-    if (secondKey = "h")
-        return "{_}"
-    if (secondKey = "/") 
-        return "\"
-    if (secondKey = "n")
-        return "{asc 0160}"
-
-    return ""
-}
-
-$Space::MapKey(" ", " ", SpaceMapping)
-$Enter::MapKey("Enter", "{Enter}", DefaultMapping)
 
 DefaultMapping(firstKey, secondKey)
 {
