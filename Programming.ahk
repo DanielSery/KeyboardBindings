@@ -176,6 +176,8 @@ ActionMapping(firstKey, secondKey)
         return "!{F4}"
     if (secondKey = "w")
         return "{LWin}"
+    if (secondKey = "r")
+        return "{F5}"
     if (secondKey = "s")
         return "#+{s}"
     if (secondKey = "e")
