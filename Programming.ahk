@@ -184,6 +184,8 @@ ActionMapping(firstKey, secondKey)
         return "{Esc}"
     if (secondKey = "t")
         return "!{Tab}"
+    if (secondKey = "l")
+        return "^+{L}"
     if (secondKey = "m") 
         return "{Volume_Mute}"
     if (secondKey = ",")
