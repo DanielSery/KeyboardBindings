@@ -1,4 +1,4 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 
 global firstKey := ""
 global firstBaseKey := ""
@@ -173,7 +173,7 @@ SpecialMapping(firstKey, secondKey)
 ActionMapping(firstKey, secondKey)
 {
     if (secondKey = "q")
-        return "{F4}"
+        return "!{F4}"
     if (secondKey = "w")
         return "{LWin}"
     if (secondKey = "s")
