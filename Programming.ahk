@@ -9,7 +9,7 @@ global queue := []
 $`::MapKey("``", "``", DefaultMapping)
 $+`::MapKey("``", "{~}", DefaultMapping)
 $Tab::MapKey("Tab", "{Tab}", WindowsMapping)
-$+Tab::MapKey("Tab", "+{Tab}", WindowsMapping)
+$+Tab::MapKey("Tab", "+{Tab}", WindowsShiftMapping)
 $CapsLock::MapKey("CapsLock", "{Delete}", ActionMapping)
 $+CapsLock::MapKey("CapsLock", "{Delete}", ActionMapping)
 
@@ -104,12 +104,12 @@ $/::MapKey("/", "/", DefaultMapping)
 $+?::MapKey("/", "?", DefaultMapping)
 
 $[::MapKey("[", "{Backspace}", WindowsMapping)
-$+[::MapKey("[", "{{}", WindowsMapping)
+$+[::MapKey("[", "{{}", WindowsShiftMapping)
 $'::MapKey("`'", "{Enter}", ActionMapping)
 $+'::MapKey("`'", "{Enter}", ActionMapping)
 
 $Space::MapKey(" ", " ", ControlMapping)
-$+Space::MapKey(" ", " ", ControlMapping)
+$+Space::MapKey(" ", " ", ControlShiftMapping)
 $Enter::MapKey("Enter", "{Enter}", DefaultMapping)
 
 $-::MapKey("-", "-", DefaultMapping)
@@ -276,132 +276,6 @@ DeleteMapping(firstKey, secondKey)
         return "^+{down}{Delete}"
     if (secondKey = "/")
         return "^{Delete}"
-
-    return ""
-}
-
-WindowsMapping(firstKey, secondKey)
-{
-    if (secondKey = "q")
-        return "#q" 
-    if (secondKey = "Q")
-        return "#Q" 
-    if (secondKey = "w") 
-        return "#w" 
-    if (secondKey = "W") 
-        return "#W" 
-    if (secondKey = "e") 
-        return "#e"
-    if (secondKey = "E") 
-        return "#E"
-    if (secondKey = "r")
-        return "#r"
-    if (secondKey = "R")
-        return "#R"
-    if (secondKey = "t")
-        return "#t"
-    if (secondKey = "T")
-        return "#T"
-    if (secondKey = "y")
-        return "#y"
-    if (secondKey = "Y")
-        return "#Y"
-    if (secondKey = "u")
-        return "#u"
-    if (secondKey = "U")
-        return "#U"
-    if (secondKey = "i")
-        return "#i"
-    if (secondKey = "I")
-        return "#I"
-    if (secondKey = "o")
-        return "#o"
-    if (secondKey = "O")
-        return "#O"
-    if (secondKey = "p")
-        return "#p"
-    if (secondKey = "P")
-        return "#P"
-
-    if (secondKey = "a")
-        return "#a"
-    if (secondKey = "A")
-        return "#A"
-    if (secondKey = "s")
-        return "#s"
-    if (secondKey = "S")
-        return "#S"
-    if (secondKey = "d")
-        return "#d"
-    if (secondKey = "D")
-        return "#D"
-    if (secondKey = "f")
-        return "#f"
-    if (secondKey = "F")
-        return "#F"
-    if (secondKey = "g")
-        return "#g"
-    if (secondKey = "G")
-        return "#G"
-    if (secondKey = "h")
-        return "#h"
-    if (secondKey = "H")
-        return "#H"
-    if (secondKey = "j")
-        return "#j"
-    if (secondKey = "J")
-        return "#J"
-    if (secondKey = "K")
-        return "#K"
-    if (secondKey = "l")
-        return "#l"
-    if (secondKey = "L")
-        return "#L"
-    if (secondKey = ";")
-        return "#;"
-    if (secondKey = ":")
-        return "#:"
-
-    if (secondKey = "z")
-        return "#z"
-    if (secondKey = "Z")
-        return "#Z"
-    if (secondKey = "x")
-        return "#x"
-    if (secondKey = "X")
-        return "#X"
-    if (secondKey = "c")
-        return "#c"
-    if (secondKey = "C")
-        return "#C"
-    if (secondKey = "v")
-        return "#v"
-    if (secondKey = "V")
-        return "#V"
-    if (secondKey = "b")
-        return "#b"
-    if (secondKey = "B")
-        return "#B"
-    if (secondKey = "n")
-        return "#n"
-    if (secondKey = "N")
-        return "#N"
-    if (secondKey = "m")
-        return "#m"
-    if (secondKey = "M")
-        return "#M"
-    if (secondKey = ",")
-        return "#,"
-    if (secondKey = "<")
-        return "#<"
-    if (secondKey = ".")
-        return "#."
-    if (secondKey = ">")
-        return "#>"
-    if (secondKey = "/")
-        return "#/"
-    if (secondKey = "?")
-        return "#?"
 
     return ""
 }
@@ -677,261 +551,153 @@ ConsonantsMapping(firstKey, secondKey)
     return ""
 }
 
-AltMapping(firstKey, secondKey)
+ModificatorMapping(firstKey, secondKey, modificator)
 {
     if (secondKey = "q")
-        return "!q" 
+        return modificator "q" 
     if (secondKey = "Q")
-        return "!Q" 
+        return modificator "Q" 
     if (secondKey = "w") 
-        return "!w" 
+        return modificator "w" 
     if (secondKey = "W") 
-        return "!W" 
+        return modificator "W" 
     if (secondKey = "e") 
-        return "!e"
+        return modificator "e"
     if (secondKey = "E") 
-        return "!E"
+        return modificator "E"
     if (secondKey = "r")
-        return "!r"
+        return modificator "r"
     if (secondKey = "R")
-        return "!R"
+        return modificator "R"
     if (secondKey = "t")
-        return "!t"
+        return modificator "t"
     if (secondKey = "T")
-        return "!T"
+        return modificator "T"
     if (secondKey = "y")
-        return "!y"
+        return modificator "y"
     if (secondKey = "Y")
-        return "!Y"
+        return modificator "Y"
     if (secondKey = "u")
-        return "!u"
+        return modificator "u"
     if (secondKey = "U")
-        return "!U"
+        return modificator "U"
     if (secondKey = "i")
-        return "!i"
+        return modificator "i"
     if (secondKey = "I")
-        return "!I"
+        return modificator "I"
     if (secondKey = "o")
-        return "!o"
+        return modificator "o"
     if (secondKey = "O")
-        return "!O"
+        return modificator "O"
     if (secondKey = "p")
-        return "!p"
+        return modificator "p"
     if (secondKey = "P")
-        return "!P"
+        return modificator "P"
 
     if (secondKey = "a")
-        return "!a"
+        return modificator "a"
     if (secondKey = "A")
-        return "!A"
+        return modificator "A"
     if (secondKey = "s")
-        return "!s"
+        return modificator "s"
     if (secondKey = "S")
-        return "!S"
+        return modificator "S"
     if (secondKey = "d")
-        return "!d"
+        return modificator "d"
     if (secondKey = "D")
-        return "!D"
+        return modificator "D"
     if (secondKey = "f")
-        return "!f"
+        return modificator "f"
     if (secondKey = "F")
-        return "!F"
+        return modificator "F"
     if (secondKey = "g")
-        return "!g"
+        return modificator "g"
     if (secondKey = "G")
-        return "!G"
+        return modificator "G"
     if (secondKey = "h")
-        return "!h"
+        return modificator "h"
     if (secondKey = "H")
-        return "!H"
+        return modificator "H"
     if (secondKey = "j")
-        return "!j"
+        return modificator "j"
     if (secondKey = "J")
-        return "!J"
+        return modificator "J"
     if (secondKey = "K")
-        return "!K"
+        return modificator "K"
     if (secondKey = "l")
-        return "!l"
+        return modificator "l"
     if (secondKey = "L")
-        return "!L"
+        return modificator "L"
     if (secondKey = ";")
-        return "!;"
+        return modificator ";"
     if (secondKey = ":")
-        return "!:"
+        return modificator ":"
 
     if (secondKey = "z")
-        return "!z"
+        return modificator "z"
     if (secondKey = "Z")
-        return "!Z"
+        return modificator "Z"
     if (secondKey = "x")
-        return "!x"
+        return modificator "x"
     if (secondKey = "X")
-        return "!X"
+        return modificator "X"
     if (secondKey = "c")
-        return "!c"
+        return modificator "c"
     if (secondKey = "C")
-        return "!C"
+        return modificator "C"
     if (secondKey = "v")
-        return "!v"
+        return modificator "v"
     if (secondKey = "V")
-        return "!V"
+        return modificator "V"
     if (secondKey = "b")
-        return "!b"
+        return modificator "b"
     if (secondKey = "B")
-        return "!B"
+        return modificator "B"
     if (secondKey = "n")
-        return "!n"
+        return modificator "n"
     if (secondKey = "N")
-        return "!N"
+        return modificator "N"
     if (secondKey = "m")
-        return "!m"
+        return modificator "m"
     if (secondKey = "M")
-        return "!M"
+        return modificator "M"
     if (secondKey = ",")
-        return "!,"
+        return modificator ","
     if (secondKey = "<")
-        return "!<"
+        return modificator "<"
     if (secondKey = ".")
-        return "!."
+        return modificator "."
     if (secondKey = ">")
-        return "!>"
+        return modificator ">"
     if (secondKey = "/")
-        return "!/"
+        return modificator "/"
     if (secondKey = "?")
-        return "!?"
+        return modificator "?"
 
-    return ""
+    if (secondKey = "{Enter}")
+        return modificator "{Enter}"
+    if (secondKey = "{Delete}")
+        return modificator "{Delete}"
+}
+
+WindowsMapping(firstKey, secondKey)
+{
+    return ModificatorMapping(firstKey, secondKey, "#")
+}
+
+WindowsShiftMapping(firstKey, secondKey)
+{
+    return ModificatorMapping(firstKey, secondKey, "#+")
 }
 
 ControlMapping(firstKey, secondKey)
 {
-    if (secondKey = "q")
-        return "^q" 
-    if (secondKey = "Q")
-        return "^Q" 
-    if (secondKey = "w") 
-        return "^w" 
-    if (secondKey = "W") 
-        return "^W" 
-    if (secondKey = "e") 
-        return "^e"
-    if (secondKey = "E") 
-        return "^E"
-    if (secondKey = "r")
-        return "^r"
-    if (secondKey = "R")
-        return "^R"
-    if (secondKey = "t")
-        return "^t"
-    if (secondKey = "T")
-        return "^T"
-    if (secondKey = "y")
-        return "^y"
-    if (secondKey = "Y")
-        return "^Y"
-    if (secondKey = "u")
-        return "^u"
-    if (secondKey = "U")
-        return "^U"
-    if (secondKey = "i")
-        return "^i"
-    if (secondKey = "I")
-        return "^I"
-    if (secondKey = "o")
-        return "^o"
-    if (secondKey = "O")
-        return "^O"
-    if (secondKey = "p")
-        return "^p"
-    if (secondKey = "P")
-        return "^P"
+    return ModificatorMapping(firstKey, secondKey, "^")
+}
 
-    if (secondKey = "a")
-        return "^a"
-    if (secondKey = "A")
-        return "^A"
-    if (secondKey = "s")
-        return "^s"
-    if (secondKey = "S")
-        return "^S"
-    if (secondKey = "d")
-        return "^d"
-    if (secondKey = "D")
-        return "^D"
-    if (secondKey = "f")
-        return "^f"
-    if (secondKey = "F")
-        return "^F"
-    if (secondKey = "g")
-        return "^g"
-    if (secondKey = "G")
-        return "^G"
-    if (secondKey = "h")
-        return "^h"
-    if (secondKey = "H")
-        return "^H"
-    if (secondKey = "j")
-        return "^j"
-    if (secondKey = "J")
-        return "^J"
-    if (secondKey = "K")
-        return "^K"
-    if (secondKey = "l")
-        return "^l"
-    if (secondKey = "L")
-        return "^L"
-    if (secondKey = ";")
-        return "^;"
-    if (secondKey = ":")
-        return "^:"
-
-    if (secondKey = "z")
-        return "^z"
-    if (secondKey = "Z")
-        return "^Z"
-    if (secondKey = "x")
-        return "^x"
-    if (secondKey = "X")
-        return "^X"
-    if (secondKey = "c")
-        return "^c"
-    if (secondKey = "C")
-        return "^C"
-    if (secondKey = "v")
-        return "^v"
-    if (secondKey = "V")
-        return "^V"
-    if (secondKey = "b")
-        return "^b"
-    if (secondKey = "B")
-        return "^B"
-    if (secondKey = "n")
-        return "^n"
-    if (secondKey = "N")
-        return "^N"
-    if (secondKey = "m")
-        return "^m"
-    if (secondKey = "M")
-        return "^M"
-    if (secondKey = ",")
-        return "^,"
-    if (secondKey = "<")
-        return "^<"
-    if (secondKey = ".")
-        return "^."
-    if (secondKey = ">")
-        return "^>"
-    if (secondKey = "/")
-        return "^/"
-    if (secondKey = "?")
-        return "^?"
-
-    if (secondKey = "{Enter}")
-        return "^{Enter}"
-    if (secondKey = "{Delete}")
-        return "^{Delete}"
-
-    return ""
+ControlShiftMapping(firstKey, secondKey)
+{
+    return ModificatorMapping(firstKey, secondKey, "^+")
 }
 
 DefaultMapping(firstKey, secondKey)
