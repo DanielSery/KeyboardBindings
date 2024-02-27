@@ -109,6 +109,7 @@ $'::MapKey("`'", "{Enter}", ActionMapping)
 $+'::MapKey("`'", "{Enter}", ActionMapping)
 
 $Space::MapKey(" ", " ", ControlMapping)
+$+Space::MapKey(" ", " ", ControlMapping)
 $Enter::MapKey("Enter", "{Enter}", DefaultMapping)
 
 $-::MapKey("-", "-", DefaultMapping)
@@ -277,78 +278,126 @@ DeleteMapping(firstKey, secondKey)
 
 WindowsMapping(firstKey, secondKey)
 {
-    if (secondKey = "q") 
-        return "#q"
+    if (secondKey = "q")
+        return "#q" 
+    if (secondKey = "Q")
+        return "#Q" 
     if (secondKey = "w") 
-        return "#w"
+        return "#w" 
+    if (secondKey = "W") 
+        return "#W" 
     if (secondKey = "e") 
         return "#e"
-    if (secondKey = "r") 
+    if (secondKey = "E") 
+        return "#E"
+    if (secondKey = "r")
         return "#r"
-    if (secondKey = "t") 
+    if (secondKey = "R")
+        return "#R"
+    if (secondKey = "t")
         return "#t"
-    if (secondKey = "y") 
+    if (secondKey = "T")
+        return "#T"
+    if (secondKey = "y")
         return "#y"
-    if (secondKey = "u") 
+    if (secondKey = "Y")
+        return "#Y"
+    if (secondKey = "u")
         return "#u"
-    if (secondKey = "i") 
+    if (secondKey = "U")
+        return "#U"
+    if (secondKey = "i")
         return "#i"
-    if (secondKey = "o") 
+    if (secondKey = "I")
+        return "#I"
+    if (secondKey = "o")
         return "#o"
-    if (secondKey = "p") 
+    if (secondKey = "O")
+        return "#O"
+    if (secondKey = "p")
         return "#p"
-    if (secondKey = "a") 
+    if (secondKey = "P")
+        return "#P"
+
+    if (secondKey = "a")
         return "#a"
-    if (secondKey = "s") 
+    if (secondKey = "A")
+        return "#A"
+    if (secondKey = "s")
         return "#s"
-    if (secondKey = "d") 
+    if (secondKey = "S")
+        return "#S"
+    if (secondKey = "d")
         return "#d"
-    if (secondKey = "f") 
+    if (secondKey = "D")
+        return "#D"
+    if (secondKey = "f")
         return "#f"
-    if (secondKey = "g") 
+    if (secondKey = "F")
+        return "#F"
+    if (secondKey = "g")
         return "#g"
-    if (secondKey = "h") 
+    if (secondKey = "G")
+        return "#G"
+    if (secondKey = "h")
         return "#h"
-    if (secondKey = "j") 
+    if (secondKey = "H")
+        return "#H"
+    if (secondKey = "j")
         return "#j"
-    if (secondKey = "k") 
-        return "#k"
-    if (secondKey = "l") 
+    if (secondKey = "J")
+        return "#J"
+    if (secondKey = "K")
+        return "#K"
+    if (secondKey = "l")
         return "#l"
-    if (secondKey = "z") 
+    if (secondKey = "L")
+        return "#L"
+    if (secondKey = ";")
+        return "#;"
+    if (secondKey = ":")
+        return "#:"
+
+    if (secondKey = "z")
         return "#z"
-    if (secondKey = "x") 
+    if (secondKey = "Z")
+        return "#Z"
+    if (secondKey = "x")
         return "#x"
-    if (secondKey = "c") 
+    if (secondKey = "X")
+        return "#X"
+    if (secondKey = "c")
         return "#c"
-    if (secondKey = "v") 
+    if (secondKey = "C")
+        return "#C"
+    if (secondKey = "v")
         return "#v"
-    if (secondKey = "b") 
+    if (secondKey = "V")
+        return "#V"
+    if (secondKey = "b")
         return "#b"
-    if (secondKey = "n") 
+    if (secondKey = "B")
+        return "#B"
+    if (secondKey = "n")
         return "#n"
+    if (secondKey = "N")
+        return "#N"
     if (secondKey = "m")
         return "#m"
-    if (secondKey = "1") 
-        return "#1"
-    if (secondKey = "2") 
-        return "#2"
-    if (secondKey = "3") 
-        return "#3"
-    if (secondKey = "4") 
-        return "#4"
-    if (secondKey = "5") 
-        return "#5"
-    if (secondKey = "6") 
-        return "#6"
-    if (secondKey = "7") 
-        return "#7"
-    if (secondKey = "8") 
-        return "#8"
-    if (secondKey = "9")
-        return "#9"
-    if (secondKey = "0")
-        return "#0"
+    if (secondKey = "M")
+        return "#M"
+    if (secondKey = ",")
+        return "#,"
+    if (secondKey = "<")
+        return "#<"
+    if (secondKey = ".")
+        return "#."
+    if (secondKey = ">")
+        return "#>"
+    if (secondKey = "/")
+        return "#/"
+    if (secondKey = "?")
+        return "#?"
 
     return ""
 }
@@ -530,7 +579,7 @@ NumericMapping(firstKey, secondKey)
     if (secondKey = "k") 
         return "5" 
     if (secondKey = "l") 
-        return "6" 
+        return "6"
     if (secondKey = "u") 
         return "7" 
     if (secondKey = "i") 
@@ -541,7 +590,7 @@ NumericMapping(firstKey, secondKey)
     if (secondKey = ";") 
         return "=" 
     if (secondKey = "p") 
-        return "+" 
+        return "{+}" 
     if (secondKey = "/") 
         return "-" 
     if (secondKey = "{Backspace}") 
@@ -549,7 +598,7 @@ NumericMapping(firstKey, secondKey)
     if (secondKey = "{Return}") 
         return "/" 
     if (secondKey = "y") 
-        return "^" 
+        return "{^}"
     if (secondKey = "h") 
         return "%" 
 }
@@ -626,136 +675,253 @@ ConsonantsMapping(firstKey, secondKey)
 
 AltMapping(firstKey, secondKey)
 {
-    if (secondKey = "q") 
+    if (secondKey = "q")
         return "!q" 
+    if (secondKey = "Q")
+        return "!Q" 
     if (secondKey = "w") 
         return "!w" 
+    if (secondKey = "W") 
+        return "!W" 
     if (secondKey = "e") 
         return "!e"
+    if (secondKey = "E") 
+        return "!E"
     if (secondKey = "r")
         return "!r"
+    if (secondKey = "R")
+        return "!R"
     if (secondKey = "t")
         return "!t"
+    if (secondKey = "T")
+        return "!T"
     if (secondKey = "y")
         return "!y"
+    if (secondKey = "Y")
+        return "!Y"
     if (secondKey = "u")
         return "!u"
+    if (secondKey = "U")
+        return "!U"
     if (secondKey = "i")
         return "!i"
+    if (secondKey = "I")
+        return "!I"
     if (secondKey = "o")
         return "!o"
+    if (secondKey = "O")
+        return "!O"
     if (secondKey = "p")
         return "!p"
+    if (secondKey = "P")
+        return "!P"
 
     if (secondKey = "a")
         return "!a"
+    if (secondKey = "A")
+        return "!A"
     if (secondKey = "s")
         return "!s"
+    if (secondKey = "S")
+        return "!S"
     if (secondKey = "d")
         return "!d"
+    if (secondKey = "D")
+        return "!D"
     if (secondKey = "f")
         return "!f"
+    if (secondKey = "F")
+        return "!F"
     if (secondKey = "g")
         return "!g"
+    if (secondKey = "G")
+        return "!G"
     if (secondKey = "h")
         return "!h"
+    if (secondKey = "H")
+        return "!H"
     if (secondKey = "j")
         return "!j"
-    if (secondKey = "k")
-        return "!k"
+    if (secondKey = "J")
+        return "!J"
+    if (secondKey = "K")
+        return "!K"
     if (secondKey = "l")
         return "!l"
+    if (secondKey = "L")
+        return "!L"
     if (secondKey = ";")
         return "!;"
+    if (secondKey = ":")
+        return "!:"
 
     if (secondKey = "z")
         return "!z"
+    if (secondKey = "Z")
+        return "!Z"
     if (secondKey = "x")
         return "!x"
+    if (secondKey = "X")
+        return "!X"
     if (secondKey = "c")
         return "!c"
+    if (secondKey = "C")
+        return "!C"
     if (secondKey = "v")
         return "!v"
+    if (secondKey = "V")
+        return "!V"
     if (secondKey = "b")
         return "!b"
+    if (secondKey = "B")
+        return "!B"
     if (secondKey = "n")
         return "!n"
+    if (secondKey = "N")
+        return "!N"
     if (secondKey = "m")
         return "!m"
+    if (secondKey = "M")
+        return "!M"
     if (secondKey = ",")
         return "!,"
-    if (secondKey = ".}")
+    if (secondKey = "<")
+        return "!<"
+    if (secondKey = ".")
         return "!."
+    if (secondKey = ">")
+        return "!>"
     if (secondKey = "/")
         return "!/"
+    if (secondKey = "?")
+        return "!?"
 
     return ""
 }
 
 ControlMapping(firstKey, secondKey)
 {
-    if (secondKey = "q") 
+    if (secondKey = "q")
         return "^q" 
+    if (secondKey = "Q")
+        return "^Q" 
     if (secondKey = "w") 
         return "^w" 
+    if (secondKey = "W") 
+        return "^W" 
     if (secondKey = "e") 
         return "^e"
+    if (secondKey = "E") 
+        return "^E"
     if (secondKey = "r")
         return "^r"
+    if (secondKey = "R")
+        return "^R"
     if (secondKey = "t")
         return "^t"
+    if (secondKey = "T")
+        return "^T"
     if (secondKey = "y")
         return "^y"
+    if (secondKey = "Y")
+        return "^Y"
     if (secondKey = "u")
         return "^u"
+    if (secondKey = "U")
+        return "^U"
     if (secondKey = "i")
         return "^i"
+    if (secondKey = "I")
+        return "^I"
     if (secondKey = "o")
         return "^o"
+    if (secondKey = "O")
+        return "^O"
     if (secondKey = "p")
         return "^p"
+    if (secondKey = "P")
+        return "^P"
 
     if (secondKey = "a")
         return "^a"
+    if (secondKey = "A")
+        return "^A"
     if (secondKey = "s")
         return "^s"
+    if (secondKey = "S")
+        return "^S"
     if (secondKey = "d")
         return "^d"
+    if (secondKey = "D")
+        return "^D"
     if (secondKey = "f")
         return "^f"
+    if (secondKey = "F")
+        return "^F"
     if (secondKey = "g")
         return "^g"
+    if (secondKey = "G")
+        return "^G"
     if (secondKey = "h")
         return "^h"
+    if (secondKey = "H")
+        return "^H"
     if (secondKey = "j")
         return "^j"
-    if (secondKey = "k")
-        return "^k"
+    if (secondKey = "J")
+        return "^J"
+    if (secondKey = "K")
+        return "^K"
     if (secondKey = "l")
         return "^l"
+    if (secondKey = "L")
+        return "^L"
     if (secondKey = ";")
         return "^;"
+    if (secondKey = ":")
+        return "^:"
 
     if (secondKey = "z")
         return "^z"
+    if (secondKey = "Z")
+        return "^Z"
     if (secondKey = "x")
         return "^x"
+    if (secondKey = "X")
+        return "^X"
     if (secondKey = "c")
         return "^c"
+    if (secondKey = "C")
+        return "^C"
     if (secondKey = "v")
         return "^v"
+    if (secondKey = "V")
+        return "^V"
     if (secondKey = "b")
         return "^b"
+    if (secondKey = "B")
+        return "^B"
     if (secondKey = "n")
         return "^n"
+    if (secondKey = "N")
+        return "^N"
     if (secondKey = "m")
         return "^m"
+    if (secondKey = "M")
+        return "^M"
     if (secondKey = ",")
         return "^,"
-    if (secondKey = ".}")
+    if (secondKey = "<")
+        return "^<"
+    if (secondKey = ".")
         return "^."
+    if (secondKey = ">")
+        return "^>"
     if (secondKey = "/")
         return "^/"
+    if (secondKey = "?")
+        return "^?"
+
     if (secondKey = "{Enter}")
         return "^{Enter}"
     if (secondKey = "{Delete}")
