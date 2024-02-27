@@ -208,6 +208,9 @@ MoveMapping(firstKey, secondKey)
         return "^!{right}"
     if (secondKey = "b") 
         return "^!{left}"
+
+    if (secondKey = "h") 
+        return "^{left}" 
     if (secondKey = "j") 
         return "{left}"
     if (secondKey = "k") 
@@ -216,13 +219,7 @@ MoveMapping(firstKey, secondKey)
         return "{down}"
     if (secondKey = ";")
         return "{right}"
-    if (secondKey = "m") 
-        return "^{left}"
-    if (secondKey = ",")
-        return "^{up}"
-    if (secondKey = ".") 
-        return "^{down}"
-    if (secondKey = "/")
+    if (secondKey = "{Enter}")
         return "^{right}"
 
     return ""
@@ -230,25 +227,24 @@ MoveMapping(firstKey, secondKey)
 
 SelectMapping(firstKey, secondKey)
 {
-    if (secondKey = "w") 
+    if (secondKey = "w")
         return "^!+{right}"
     if (secondKey = "e") 
         return "^!+{right}"
     if (secondKey = "b") 
         return "^!+{left}"
+
+    if (secondKey = "h") 
+        return "^+{left}" 
     if (secondKey = "j") 
         return "+{left}"
     if (secondKey = "k") 
+        return "+{up}"
+    if (secondKey = "l") 
         return "+{down}"
     if (secondKey = ";")
         return "+{right}"
-    if (secondKey = "m") 
-        return "^+{left}"
-    if (secondKey = ",")
-        return "^+{up}"
-    if (secondKey = ".") 
-        return "^+{down}"
-    if (secondKey = "/")
+    if (secondKey = "{Enter}")
         return "^+{right}"
 
     return ""
@@ -256,12 +252,15 @@ SelectMapping(firstKey, secondKey)
 
 DeleteMapping(firstKey, secondKey)
 {
-    if (secondKey = "w") 
+    if (secondKey = "w")
         return "^!+{right}{Delete}"
     if (secondKey = "e") 
         return "^!+{right}{Delete}"
     if (secondKey = "b") 
         return "^!+{left}{Delete}"
+
+    if (secondKey = "h") 
+        return "^{Backspace}"
     if (secondKey = "j") 
         return "{Backspace}"
     if (secondKey = "k") 
@@ -270,13 +269,7 @@ DeleteMapping(firstKey, secondKey)
         return "+{down}{Delete}"
     if (secondKey = ";")
         return "{Delete}"
-    if (secondKey = "m") 
-        return "^{Backspace}"
-    if (secondKey = ",")
-        return "^+{up}{Delete}"
-    if (secondKey = ".") 
-        return "^+{down}{Delete}"
-    if (secondKey = "/")
+    if (secondKey = "{Enter}")
         return "^{Delete}"
 
     return ""
