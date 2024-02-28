@@ -88,7 +88,7 @@ $+,::MapKey(",", "<", DefaultMapping)
 $9::MapKey("9", "9", DefaultMapping)
 $+9::MapKey("9", "{(}", DefaultMapping)
 $o::MapKey("o", "o", ConsonantsMapping)
-$+o::MapKey("o", "O", ConsonantsMapping)
+$+o::MapKey("o", "O", CapitalConsonantsMapping)
 $l::MapKey("l", "l", DefaultMapping)
 $+l::MapKey("l", "L", DefaultMapping)
 $.::MapKey(".", ".", DefaultMapping)
@@ -97,7 +97,7 @@ $+.::MapKey(".", ">", DefaultMapping)
 $0::MapKey("0", "0", DefaultMapping)
 $+0::MapKey("0", "{)}", DefaultMapping)
 $p::MapKey("p", "p", VovelsMapping)
-$+p::MapKey("p", "P", VovelsMapping)
+$+p::MapKey("p", "P", CapitalVovelsMapping)
 $;::MapKey(";", ";", DefaultMapping)
 $+;::MapKey(";", ":", DefaultMapping)
 $/::MapKey("/", "/", DefaultMapping)
@@ -334,9 +334,9 @@ GotoMapping(firstKey, secondKey)
     if (secondKey = "j") 
         return "!{left}"
     if (secondKey = "k") 
-        return "^+{F3}"
+        return "+{F3}"
     if (secondKey = "l") 
-        return "^{F3}"
+        return "{F3}"
     if (secondKey = ";") 
         return "!{right}"
     if (secondKey = "m") 
@@ -475,13 +475,43 @@ NumericMapping(firstKey, secondKey)
     if (secondKey = "/") 
         return "-" 
     if (secondKey = "{Backspace}") 
-        return "*" 
-    if (secondKey = "{Return}") 
-        return "/" 
+        return "*"
+    if (secondKey = "{Enter}")
+        return "{/}"
     if (secondKey = "y") 
         return "{^}"
     if (secondKey = "h") 
-        return "%" 
+        return "{%}" 
+}
+
+CapitalVovelsMapping(firstKey, secondKey)
+{
+    if (secondKey = "a")
+        return "Á"
+    if (secondKey = "A")
+        return "Á"
+    if (secondKey = "e")
+        return "É"
+    if (secondKey = "E")
+        return "É"
+    if (secondKey = "i")
+        return "Í"
+    if (secondKey = "I")
+        return "Í"
+    if (secondKey = "o")
+        return "Ó"
+    if (secondKey = "O")
+        return "Ó"
+    if (secondKey = "u")
+        return "Ú"
+    if (secondKey = "U")
+        return "Ú"
+    if (secondKey = "y")
+        return "Ý"
+    if (secondKey = "Y")
+        return "Ý"
+
+    return ""
 }
 
 VovelsMapping(firstKey, secondKey)
@@ -489,27 +519,65 @@ VovelsMapping(firstKey, secondKey)
     if (secondKey = "a")
         return "á"
     if (secondKey = "A")
-        return "Á"
+        return "á"
     if (secondKey = "e")
-        return "é"
+        return "é" 
     if (secondKey = "E")
-        return "É"
+        return "é" 
     if (secondKey = "i")
         return "í"
     if (secondKey = "I")
-        return "Í"
+        return "í"
     if (secondKey = "o")
         return "ó"
     if (secondKey = "O")
-        return "Ó"
+        return "ó"
     if (secondKey = "u")
         return "ú"
     if (secondKey = "U")
-        return "Ú"
+        return "ú"
     if (secondKey = "y")
         return "ý" 
     if (secondKey = "Y")
-        return "Ý"
+        return "ý" 
+
+    return ""
+}
+
+CapitalConsonantsMapping(firstKey, secondKey)
+{
+    if (secondKey = "e") 
+        return "Ě"
+    if (secondKey = "E") 
+        return "Ě"
+    if (secondKey = "r") 
+        return "Ř"
+    if (secondKey = "R") 
+        return "Ř"
+    if (secondKey = "t") 
+        return "Ť"
+    if (secondKey = "T") 
+        return "Ť"
+    if (secondKey = "s") 
+        return "Š"
+    if (secondKey = "S") 
+        return "Š"
+    if (secondKey = "d") 
+        return "Ď"
+    if (secondKey = "D") 
+        return "Ď"
+    if (secondKey = "z") 
+        return "Ž"
+    if (secondKey = "Z") 
+        return "Ž"
+    if (secondKey = "c") 
+        return "Č"
+    if (secondKey = "C") 
+        return "Č"
+    if (secondKey = "n") 
+        return "Ň"
+    if (secondKey = "N") 
+        return "Ň"
 
     return ""
 }
@@ -519,37 +587,37 @@ ConsonantsMapping(firstKey, secondKey)
     if (secondKey = "e") 
         return "ě"
     if (secondKey = "E") 
-        return "Ě"
+        return "ě"
     if (secondKey = "r") 
         return "ř"
     if (secondKey = "R") 
-        return "Ř"
+        return "ř"
     if (secondKey = "t") 
         return "ť"
     if (secondKey = "T") 
-        return "Ť"
+        return "ť"
     if (secondKey = "u")
         return "ů"
     if (secondKey = "s") 
         return "š"
     if (secondKey = "S") 
-        return "Š"
+        return "š"
     if (secondKey = "d") 
         return "ď"
     if (secondKey = "D") 
-        return "Ď"
+        return "ď"
     if (secondKey = "z") 
         return "ž"
     if (secondKey = "Z") 
-        return "Ž"
+        return "ž"
     if (secondKey = "c") 
         return "č"
     if (secondKey = "C") 
-        return "Č"
+        return "č"
     if (secondKey = "n") 
         return "ň"
     if (secondKey = "N") 
-        return "Ň"
+        return "ň"
 
     return ""
 }
