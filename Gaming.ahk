@@ -17,8 +17,8 @@ $1::MapKey("1", "1", DefaultMapping)
 $+1::MapKey("1", "{!}", DefaultMapping)
 $q::MapKey("q", "q", VovelsMapping)
 $+q::MapKey("q", "Q", VovelsMapping)
-$a::MapKey("a", "a", MoveMapping)
-$+a::MapKey("a", "A", MoveMapping)
+$a::MapKey("a", "a", DefaultMapping)
+$+a::MapKey("a", "A", DefaultMapping)
 $z::MapKey("z", "z", DefaultMapping)
 $+z::MapKey("z", "Z", DefaultMapping)
 
@@ -26,8 +26,8 @@ $2::MapKey("2", "2", DefaultMapping)
 $+2::MapKey("2", "{@}", DefaultMapping)
 $w::MapKey("w", "w", ConsonantsMapping)
 $+w::MapKey("w", "W", ConsonantsMapping)
-$s::MapKey("s", "s", SelectMapping)
-$+s::MapKey("s", "S", SelectMapping)
+$s::MapKey("s", "s", DefaultMapping)
+$+s::MapKey("s", "S", DefaultMapping)
 $x::MapKey("x", "x", DefaultMapping)
 $+x::MapKey("x", "X", DefaultMapping)
 
@@ -35,15 +35,15 @@ $3::MapKey("3", "3", DefaultMapping)
 $+3::MapKey("3", "{#}", DefaultMapping)
 $e::MapKey("e", "e", DefaultMapping)
 $+e::MapKey("e", "E", DefaultMapping)
-$d::MapKey("d", "d", DeleteMapping)
-$+d::MapKey("d", "D", DeleteMapping)
+$d::MapKey("d", "d", DefaultMapping)
+$+d::MapKey("d", "D", DefaultMapping)
 $c::MapKey("c", "c", DefaultMapping)
 $+c::MapKey("c", "C", DefaultMapping)
 
 $4::MapKey("4", "4", DefaultMapping)
 $+4::MapKey("4", "{$}", DefaultMapping)
-$r::MapKey("r", "r", RefactorMapping)
-$+r::MapKey("r", "R", RefactorMapping)
+$r::MapKey("r", "r", DefaultMapping)
+$+r::MapKey("r", "R", DefaultMapping)
 $f::MapKey("f", "f", SpecialMapping)
 $+f::MapKey("f", "F", SpecialMapping)
 $v::MapKey("v", "v", NumericMapping)
@@ -53,10 +53,10 @@ $5::MapKey("5", "5", DefaultMapping)
 $+5::MapKey("5", "{%}", DefaultMapping)
 $t::MapKey("t", "t", DefaultMapping)
 $+t::MapKey("t", "T", DefaultMapping)
-$g::MapKey("g", "g", GotoMapping)
-$+g::MapKey("g", "G", GotoMapping)
-$b::MapKey("b", "b", BuildMapping)
-$+b::MapKey("b", "B", BuildMapping)
+$g::MapKey("g", "g", DefaultMapping)
+$+g::MapKey("g", "G", DefaultMapping)
+$b::MapKey("b", "b", DefaultMapping)
+$+b::MapKey("b", "B", DefaultMapping)
 
 $6::MapKey("6", "6", DefaultMapping)
 $+6::MapKey("6", "{^}", DefaultMapping)
@@ -69,8 +69,8 @@ $+n::MapKey("n", "N", DefaultMapping)
 
 $7::MapKey("7", "7", DefaultMapping)
 $+7::MapKey("7", "{&}", DefaultMapping)
-$u::MapKey("u", "u", UnitTestMapping)
-$+u::MapKey("u", "U", UnitTestMapping)
+$u::MapKey("u", "u", DefaultMapping)
+$+u::MapKey("u", "U", DefaultMapping)
 $j::MapKey("j", "j", SpecialMapping)
 $+j::MapKey("j", "J", SpecialMapping)
 $m::MapKey("m", "m", DefaultMapping)
@@ -78,10 +78,10 @@ $+M::MapKey("m", "M", DefaultMapping)
 
 $8::MapKey("8", "8", DefaultMapping)
 $+8::MapKey("8", "{*}", DefaultMapping)
-$i::MapKey("i", "i", ProcessInspectionMapping)
-$+i::MapKey("i", "I", ProcessInspectionMapping)
-$k::MapKey("k", "k", SourceControlMapping)
-$+k::MapKey("k", "K", SourceControlMapping)
+$i::MapKey("i", "i", DefaultMapping)
+$+i::MapKey("i", "I", DefaultMapping)
+$k::MapKey("k", "k", DefaultMapping)
+$+k::MapKey("k", "K", DefaultMapping)
 $,::MapKey(",", ",", DefaultMapping)
 $+,::MapKey(",", "<", DefaultMapping)
 
@@ -108,8 +108,8 @@ $+[::MapKey("[", "{{}", WindowsShiftMapping)
 $'::MapKey("`'", "{Enter}", ActionMapping)
 $+'::MapKey("`'", "{Enter}", ActionMapping)
 
-$Space::MapKey(" ", " ", SpaceMapping)
-$+Space::MapKey(" ", " ", SpaceMapping)
+$Space::MapKey(" ", " ", ControlMapping)
+$+Space::MapKey(" ", " ", ControlShiftMapping)
 $Enter::MapKey("Enter", "{Enter}", DefaultMapping)
 
 $-::MapKey("-", "-", DefaultMapping)
@@ -120,61 +120,6 @@ $]::MapKey("]", "]", DefaultMapping)
 $+]::MapKey("]", "{}}", DefaultMapping)
 $\::MapKey("`\", "`\", DefaultMapping)
 $+\::MapKey("`\", "`|", DefaultMapping)
-
-SpaceMapping(firstKey, secondKey)
-{
-    if (secondKey = "1") 
-        return "6" 
-    if (secondKey = "q") 
-        return "y" 
-    if (secondKey = "a") 
-        return "h" 
-    if (secondKey = "z") 
-        return "n" 
-        
-    if (secondKey = "2") 
-        return "7" 
-    if (secondKey = "w") 
-        return "u" 
-    if (secondKey = "s") 
-        return "j" 
-    if (secondKey = "x") 
-        return "m" 
-        
-    if (secondKey = "3") 
-        return "8" 
-    if (secondKey = "e") 
-        return "i" 
-    if (secondKey = "d") 
-        return "k" 
-    if (secondKey = "c") 
-        return "," 
-        
-    if (secondKey = "4") 
-        return "9" 
-    if (secondKey = "r") 
-        return "o" 
-    if (secondKey = "f") 
-        return "l" 
-    if (secondKey = "v") 
-        return "." 
-        
-    if (secondKey = "5") 
-        return "0" 
-    if (secondKey = "t") 
-        return "p" 
-    if (secondKey = "g") 
-        return ";" 
-    if (secondKey = "b") 
-        return "/"
-
-    if (secondKey = "{Tab}") 
-        return "+{Tab}"
-    if (secondKey = "{Delete}") 
-        return "+{Delete}"
-
-    return ""
-}
 
 SpecialMapping(firstKey, secondKey)
 {
@@ -251,243 +196,6 @@ ActionMapping(firstKey, secondKey)
         return "{Volume_Down}"
     if (secondKey = "p")
         return "{PrtSc}"
-
-    return ""
-}
-
-MoveMapping(firstKey, secondKey)
-{
-    if (secondKey = "w")
-        return "^!{right}"
-    if (secondKey = "e") 
-        return "^!{right}"
-    if (secondKey = "b") 
-        return "^!{left}"
-
-    if (secondKey = "h") 
-        return "^{left}" 
-    if (secondKey = "j") 
-        return "{left}"
-    if (secondKey = "k") 
-        return "{up}"
-    if (secondKey = "l") 
-        return "{down}"
-    if (secondKey = ";")
-        return "{right}"
-    if (secondKey = "{Enter}")
-        return "^{right}"
-
-    return ""
-}
-
-SelectMapping(firstKey, secondKey)
-{
-    if (secondKey = "w")
-        return "^!+{right}"
-    if (secondKey = "e") 
-        return "^!+{right}"
-    if (secondKey = "b") 
-        return "^!+{left}"
-
-    if (secondKey = "h") 
-        return "^+{left}" 
-    if (secondKey = "j") 
-        return "+{left}"
-    if (secondKey = "k") 
-        return "+{up}"
-    if (secondKey = "l") 
-        return "+{down}"
-    if (secondKey = ";")
-        return "+{right}"
-    if (secondKey = "{Enter}")
-        return "^+{right}"
-
-    return ""
-}
-
-DeleteMapping(firstKey, secondKey)
-{
-    if (secondKey = "w")
-        return "^!+{right}{Delete}"
-    if (secondKey = "e") 
-        return "^!+{right}{Delete}"
-    if (secondKey = "b") 
-        return "^!+{left}{Delete}"
-
-    if (secondKey = "h") 
-        return "^{Backspace}"
-    if (secondKey = "j") 
-        return "{Backspace}"
-    if (secondKey = "k") 
-        return "+{up}{Delete}"
-    if (secondKey = "l") 
-        return "+{down}{Delete}"
-    if (secondKey = ";")
-        return "{Delete}"
-    if (secondKey = "{Enter}")
-        return "^{Delete}"
-
-    return ""
-}
-
-RefactorMapping(firstKey, secondKey)
-{
-    if (secondKey = "/") 
-        return "!^/" 
-    if (secondKey = "a") 
-        return "^r^a" 
-    if (secondKey = "n") 
-        return "^r^r"
-    if (secondKey = "s")
-        return "^r^s"
-    if (secondKey = "v")
-        return "^r^v"
-    if (secondKey = "f")
-        return "^r^f"
-    if (secondKey = "p")
-        return "^r^p"
-    if (secondKey = "m")
-        return "^r^m"
-    if (secondKey = "d")
-        return "^r^d"
-
-    return ""
-}
-
-GotoMapping(firstKey, secondKey)
-{
-    if (secondKey = "q") 
-        return "^+a"
-    if (secondKey = "w") 
-        return "^n^w"
-    if (secondKey = "e") 
-        return "^n^e"
-    if (secondKey = "u") 
-        return "^n^u"
-    if (secondKey = "i") 
-        return "^n^i"
-    if (secondKey = "a")
-        return "^i^o"
-    if (secondKey = "b") 
-        return "^n^b"
-    if (secondKey = "d")
-        return "^n^d"
-    if (secondKey = "h") 
-        return "^n^h"
-    if (secondKey = "s")
-        return "^n^l"
-    if (secondKey = "c")
-        return "^i^i"
-    if (secondKey = "j") 
-        return "!{left}"
-    if (secondKey = "k") 
-        return "^+{F3}"
-    if (secondKey = "l") 
-        return "^{F3}"
-    if (secondKey = ";") 
-        return "!{right}"
-    if (secondKey = "m") 
-        return "^+{left}"
-    if (secondKey = ",") 
-        return "^+{up}"
-    if (secondKey = ".") 
-        return "^+{down}"
-    if (secondKey = "/") 
-        return "^+{right}"
-
-    return ""
-}
-
-BuildMapping(firstKey, secondKey)
-{
-    if (secondKey = "c") 
-        return "^b^c"
-    if (secondKey = "s") 
-        return "^b^s"
-    if (secondKey = "a") 
-        return "^b^a"
-    if (secondKey = "r")
-        return "^b^r"
-    if (secondKey = "d")
-        return "^b^d"
-    if (secondKey = "w")
-        return "^b^w"
-
-    return ""
-}
-
-UnitTestMapping(firstKey, secondKey)
-{
-    if (secondKey = "r") 
-        return "^u^r"
-    if (secondKey = "d") 
-        return "^u^d"
-    if (secondKey = "c") 
-        return "^u^c"
-    if (secondKey = "e")
-        return "^u^e"
-    if (secondKey = "s")
-        return "^u^s"
-    if (secondKey = "a")
-        return "^u^a"
-
-    return ""
-}
-
-SourceControlMapping(firstKey, secondKey)
-{
-    if (secondKey = "c") 
-        return "^k^c"
-    if (secondKey = "r") 
-        return "^k^r"
-    if (secondKey = "t") 
-        return "^k^t"
-    if (secondKey = "b")
-        return "^k^b"
-    if (secondKey = "a")
-        return "^k^a"
-    if (secondKey = "h")
-        return "^k^h"
-    if (secondKey = "s")
-        return "^k^k"
-    if (secondKey = "l")
-        return "^k^l"
-    if (secondKey = "p")
-        return "^k^p"
-    if (secondKey = "z")
-        return "^k^z"
-    if (secondKey = "f")
-        return "^k^f"
-    if (secondKey = "b")
-        return "^k^b"
-    if (secondKey = "m")
-        return "^k^m"
-
-    return ""
-}
-
-ProcessInspectionMapping(firstKey, secondKey)
-{
-    if (secondKey = "w") 
-        return "^d^w"
-    if (secondKey = "e") 
-        return "^d^e"
-    if (secondKey = "r") 
-        return "{F5}"
-    if (secondKey = "i") 
-        return "{F11}"
-    if (secondKey = "o") 
-        return "{F10}"
-    if (secondKey = "a") 
-        return "^d^e"
-    if (secondKey = "s") 
-        return "^d^e"
-    if (secondKey = "f") 
-        return "^d^f"
-    if (secondKey = "c") 
-        return "^d^c"
-    if (secondKey = "b") 
-        return "{F9}"
 
     return ""
 }

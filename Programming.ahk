@@ -135,6 +135,10 @@ SpecialMapping(firstKey, secondKey)
         return "{{}"
     if (secondKey = "i")
         return "{}}"
+    if (secondKey = ",")
+        return "<"
+    if (secondKey = ".")
+        return ">"
     if (secondKey = "o")
         return "`""
     if (secondKey = "p")
@@ -158,8 +162,10 @@ SpecialMapping(firstKey, secondKey)
     if (secondKey = "f")
         return "{$}"
 
-    if (secondKey = "h")
+    if (secondKey = "g")
         return "{_}"
+    if (secondKey = "h")
+        return "="
 
     if (secondKey = "/") 
         return "\"
@@ -196,6 +202,8 @@ ActionMapping(firstKey, secondKey)
         return "{Volume_Down}"
     if (secondKey = "p")
         return "{PrtSc}"
+    if (secondKey = " ")
+        return "^{Space}"
 
     return ""
 }
@@ -419,7 +427,7 @@ ProcessInspectionMapping(firstKey, secondKey)
         return "^d^e"
     if (secondKey = "r") 
         return "{F5}"
-    if (secondKey = "i") 
+    if (secondKey = "u") 
         return "{F11}"
     if (secondKey = "o") 
         return "{F10}"
