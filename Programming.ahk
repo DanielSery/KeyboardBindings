@@ -37,8 +37,8 @@ $e::MapKey("e", "e", DefaultMapping)
 $+e::MapKey("e", "E", DefaultMapping)
 $d::MapKey("d", "d", DeleteMapping)
 $+d::MapKey("d", "D", DeleteMapping)
-$c::MapKey("c", "c", DefaultMapping)
-$+c::MapKey("c", "C", DefaultMapping)
+$c::MapKey("c", "c", ConflictMapping)
+$+c::MapKey("c", "C", ConflictMapping)
 
 $4::MapKey("4", "4", DefaultMapping)
 $+4::MapKey("4", "{$}", DefaultMapping)
@@ -304,6 +304,20 @@ RefactorMapping(firstKey, secondKey)
     if (secondKey = "d")
         return "^r^d"
 
+    return ""
+}
+
+ConflictMapping(firstKey, secondKey)
+{
+    if (secondKey = "j") 
+        return "^m^l"
+    if (secondKey = "k") 
+        return "^m^p"
+    if (secondKey = "l") 
+        return "^m^n"
+    if (secondKey = ";") 
+        return "^m^r"
+        
     return ""
 }
 
