@@ -429,6 +429,10 @@ SourceControlMapping(firstKey, secondKey)
         return "^k^b"
     if (secondKey = "m")
         return "^k^m"
+    if (secondKey = "v")
+        return "^k^v"
+    if (secondKey = "e")
+        return "^k^i"
 
     return ""
 }
@@ -707,6 +711,8 @@ ModificatorMapping(firstKey, secondKey, modificator)
         return modificator "j"
     if (secondKey = "J")
         return modificator "J"
+    if (secondKey = "k")
+        return modificator "k"
     if (secondKey = "K")
         return modificator "K"
     if (secondKey = "l")
