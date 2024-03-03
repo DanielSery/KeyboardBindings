@@ -455,7 +455,7 @@ ControlMapping(firstKey, secondKey)
 {
     if (secondKey = "{Tab}")
         return "!{Click}"
-    if (secondKey = "{Delete}")
+    if (secondKey = "{Tab}")
         return "^{Click}"
 
     return ModificatorMapping(firstKey, secondKey, "^")
