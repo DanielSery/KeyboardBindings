@@ -121,6 +121,9 @@ $+]::MapKey("]", "{}}", DefaultMapping)
 $\::MapKey("`\", "`\", DefaultMapping)
 $+\::MapKey("`\", "`|", DefaultMapping)
 
+XButton2::LAlt
+XButton1::LControl
+
 SpecialMapping(firstKey, secondKey)
 {
     if (secondKey = "j") 
@@ -504,7 +507,7 @@ MapKey(baseKey, key, mapping)
             while (GetKeyState(firstBaseKey, "P") AND
                 (secondBaseKey = "" OR GetKeyState(secondBaseKey, "P")) AND
                 queue.Length = 0 AND
-                (NOT repeatedHandling OR A_TickCount - startTime < 100))
+                (NOT repeatedHandling OR A_TickCount - startTime < 25))
             {
                 Sleep(10)
 

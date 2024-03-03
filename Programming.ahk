@@ -180,14 +180,8 @@ ActionMapping(firstKey, secondKey)
 {
     if (secondKey = "q")
         return "!{F4}"
-    if (secondKey = "w")
-        return "{LWin}"
-    if (secondKey = "r")
-        return "{F5}"
     if (secondKey = "s")
         return "#+{s}"
-    if (secondKey = "e")
-        return "{Esc}"
     if (secondKey = "p")
         return "^+{Esc}"
     if (secondKey = "t")
@@ -200,8 +194,6 @@ ActionMapping(firstKey, secondKey)
         return "{Volume_Up}"
     if (secondKey = ".")
         return "{Volume_Down}"
-    if (secondKey = "p")
-        return "{PrtSc}"
     if (secondKey = " ")
         return "^{Space}"
 
@@ -210,23 +202,29 @@ ActionMapping(firstKey, secondKey)
 
 MoveMapping(firstKey, secondKey)
 {
-    if (secondKey = "w")
-        return "^!{right}"
-    if (secondKey = "e") 
-        return "^!{right}"
-    if (secondKey = "b") 
-        return "^!{left}"
-
     if (secondKey = "h") 
         return "^{left}" 
+        
+    if (secondKey = "u") 
+        return "^!{left}"
     if (secondKey = "j") 
         return "{left}"
+        
+    if (secondKey = "i") 
+        return "{PgUp}"
     if (secondKey = "k") 
         return "{up}"
-    if (secondKey = "l") 
+        
+    if (secondKey = "o") 
+        return "{PgDn}"
+    if (secondKey = "l")
         return "{down}"
+        
+    if (secondKey = "p") 
+        return "^!{right}"
     if (secondKey = ";")
         return "{right}"
+        
     if (secondKey = "{Enter}")
         return "^{right}"
 
@@ -235,48 +233,60 @@ MoveMapping(firstKey, secondKey)
 
 SelectMapping(firstKey, secondKey)
 {
-    if (secondKey = "w")
-        return "^!+{right}"
-    if (secondKey = "e") 
-        return "^!+{right}"
-    if (secondKey = "b") 
-        return "^!+{left}"
-
     if (secondKey = "h") 
-        return "^+{left}" 
+        return "+^{left}" 
+        
+    if (secondKey = "u") 
+        return "+^!{left}"
     if (secondKey = "j") 
         return "+{left}"
+        
+    if (secondKey = "i") 
+        return "+{PgUp}"
     if (secondKey = "k") 
         return "+{up}"
-    if (secondKey = "l") 
+        
+    if (secondKey = "o") 
+        return "+{PgDn}"
+    if (secondKey = "l")
         return "+{down}"
+        
+    if (secondKey = "p") 
+        return "+^!{right}"
     if (secondKey = ";")
         return "+{right}"
+        
     if (secondKey = "{Enter}")
-        return "^+{right}"
+        return "+^{right}"
 
     return ""
 }
 
 DeleteMapping(firstKey, secondKey)
 {
-    if (secondKey = "w")
-        return "^!+{right}{Delete}"
-    if (secondKey = "e") 
-        return "^!+{right}{Delete}"
-    if (secondKey = "b") 
-        return "^!+{left}{Delete}"
-
     if (secondKey = "h") 
-        return "^{Backspace}"
-    if (secondKey = "j") 
+        return "^{Backspace}" 
+        
+    if (secondKey = "u") 
+        return "+^!{left}{Delete}"
+    if (secondKey = "j")
         return "{Backspace}"
+        
+    if (secondKey = "i") 
+        return "+{PgUp}{Delete}"
     if (secondKey = "k") 
         return "+{up}{Delete}"
-    if (secondKey = "l") 
+        
+    if (secondKey = "o") 
+        return "+{PgDn}{Delete}"
+    if (secondKey = "l")
         return "+{down}{Delete}"
+        
+    if (secondKey = "p") 
+        return "+^!{right}{Delete}"
     if (secondKey = ";")
         return "{Delete}"
+        
     if (secondKey = "{Enter}")
         return "^{Delete}"
 
@@ -837,7 +847,7 @@ MapKey(baseKey, key, mapping)
             while (GetKeyState(firstBaseKey, "P") AND
                 (secondBaseKey = "" OR GetKeyState(secondBaseKey, "P")) AND
                 queue.Length = 0 AND
-                (NOT repeatedHandling OR A_TickCount - startTime < 100))
+                (NOT repeatedHandling OR A_TickCount - startTime < 25))
             {
                 Sleep(10)
 
