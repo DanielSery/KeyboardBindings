@@ -143,7 +143,7 @@ SpecialMapping(firstKey, secondKey)
         return "`""
     if (secondKey = "p")
         return "`'"
-    if (secondKey = "{Backspace}")
+    if (secondKey = "{[}")
         return "``"
 
     if (secondKey = "a")
@@ -225,7 +225,7 @@ MoveMapping(firstKey, secondKey)
     if (secondKey = ";")
         return "{right}"
         
-    if (secondKey = "{Enter}")
+    if (secondKey = "'")
         return "^{right}"
 
     return ""
@@ -256,7 +256,7 @@ SelectMapping(firstKey, secondKey)
     if (secondKey = ";")
         return "+{right}"
         
-    if (secondKey = "{Enter}")
+    if (secondKey = "'")
         return "+^{right}"
 
     return ""
@@ -287,7 +287,7 @@ DeleteMapping(firstKey, secondKey)
     if (secondKey = ";")
         return "{Delete}"
         
-    if (secondKey = "{Enter}")
+    if (secondKey = "'")
         return "^{Delete}"
 
     return ""
@@ -502,9 +502,9 @@ NumericMapping(firstKey, secondKey)
         return "{+}" 
     if (secondKey = "/") 
         return "-" 
-    if (secondKey = "{Backspace}") 
+    if (secondKey = "{[}")
         return "*"
-    if (secondKey = "{Enter}")
+    if (secondKey = "'")
         return "{/}"
     if (secondKey = "y") 
         return "{^}"
@@ -797,6 +797,10 @@ ModificatorMapping(firstKey, secondKey, modificator)
         return modificator "/"
     if (secondKey = "?")
         return modificator "?"
+    if (secondKey = "{[}")
+        return modificator "{[}"
+    if (secondKey = "'")
+        return modificator "'"
 
     if (secondKey = "{Enter}")
         return modificator "{Enter}"
