@@ -33,8 +33,8 @@ $+x::MapKey("x", "X", DefaultMapping)
 
 $3::MapKey("3", "3", DefaultMapping)
 $+3::MapKey("3", "{#}", DefaultMapping)
-$e::MapKey("e", "e", DefaultMapping)
-$+e::MapKey("e", "E", DefaultMapping)
+$e::MapKey("e", "e", NumericMapping)
+$+e::MapKey("e", "E", NumericMapping)
 $d::MapKey("d", "d", DeleteMapping)
 $+d::MapKey("d", "D", DeleteMapping)
 $c::MapKey("c", "c", ConflictMapping)
@@ -46,8 +46,8 @@ $r::MapKey("r", "r", RefactorMapping)
 $+r::MapKey("r", "R", RefactorMapping)
 $f::MapKey("f", "f", SpecialMapping)
 $+f::MapKey("f", "F", SpecialMapping)
-$v::MapKey("v", "v", NumericMapping)
-$+v::MapKey("v", "V", NumericMapping)
+$v::MapKey("v", "v", DefaultMapping)
+$+v::MapKey("v", "V", DefaultMapping)
 
 $5::MapKey("5", "5", DefaultMapping)
 $+5::MapKey("5", "{%}", DefaultMapping)
@@ -146,25 +146,25 @@ SpecialMapping(firstKey, secondKey)
     if (secondKey = "{[}")
         return "``"
 
-    if (secondKey = "a")
-        return "{!}"
     if (secondKey = "q")
-        return "`|"
-    if (secondKey = "z")
+        return "{!}"
+    if (secondKey = "a")
         return "&"
+    if (secondKey = "z")
+        return "`|"
 
-    if (secondKey = "s")
+    if (secondKey = "w")
         return "{@}"
 
-    if (secondKey = "d")
+    if (secondKey = "e")
         return "{#}"
 
-    if (secondKey = "f")
+    if (secondKey = "r")
         return "{$}"
 
-    if (secondKey = "g")
+    if (secondKey = "f")
         return "{_}"
-    if (secondKey = "h")
+    if (secondKey = "d")
         return "="
 
     if (secondKey = "/") 
@@ -172,6 +172,9 @@ SpecialMapping(firstKey, secondKey)
 
     if (secondKey = "n")
         return "{asc 0160}"
+        
+    if (secondKey = " ")
+        return "^" firstKey
 
     return ""
 }
@@ -196,6 +199,9 @@ ActionMapping(firstKey, secondKey)
         return "{Volume_Down}"
     if (secondKey = " ")
         return "^{Space}"
+        
+    if (secondKey = " ")
+        return "^" firstKey
 
     return ""
 }
@@ -209,6 +215,8 @@ MoveMapping(firstKey, secondKey)
         return "^!{left}"
     if (secondKey = "j") 
         return "{left}"
+    if (secondKey = "m") 
+        return "^{left}" 
         
     if (secondKey = "i") 
         return "{PgUp}"
@@ -224,9 +232,14 @@ MoveMapping(firstKey, secondKey)
         return "^!{right}"
     if (secondKey = ";")
         return "{right}"
+    if (secondKey = "/")
+        return "^{right}"
         
     if (secondKey = "'")
         return "^{right}"
+        
+    if (secondKey = " ")
+        return "{Enter}"
 
     return ""
 }
@@ -240,6 +253,8 @@ SelectMapping(firstKey, secondKey)
         return "+^!{left}"
     if (secondKey = "j") 
         return "+{left}"
+    if (secondKey = "m") 
+        return "+^{left}" 
         
     if (secondKey = "i") 
         return "+{PgUp}"
@@ -255,9 +270,14 @@ SelectMapping(firstKey, secondKey)
         return "+^!{right}"
     if (secondKey = ";")
         return "+{right}"
+    if (secondKey = "/")
+        return "+^{right}"
         
     if (secondKey = "'")
         return "+^{right}"
+        
+    if (secondKey = " ")
+        return "^" firstKey
 
     return ""
 }
@@ -271,6 +291,8 @@ DeleteMapping(firstKey, secondKey)
         return "+^!{left}{Delete}"
     if (secondKey = "j")
         return "{Backspace}"
+    if (secondKey = "m") 
+        return "^{Backspace}" 
         
     if (secondKey = "i") 
         return "+{PgUp}{Delete}"
@@ -286,9 +308,14 @@ DeleteMapping(firstKey, secondKey)
         return "+^!{right}{Delete}"
     if (secondKey = ";")
         return "{Delete}"
+    if (secondKey = "/")
+        return "^{Delete}"
         
     if (secondKey = "'")
         return "^{Delete}"
+        
+    if (secondKey = " ")
+        return "^" firstKey
 
     return ""
 }
@@ -313,6 +340,9 @@ RefactorMapping(firstKey, secondKey)
         return "^r^m"
     if (secondKey = "d")
         return "^r^d"
+        
+    if (secondKey = " ")
+        return "^" firstKey
 
     return ""
 }
@@ -327,6 +357,9 @@ ConflictMapping(firstKey, secondKey)
         return "^m^n"
     if (secondKey = ";") 
         return "^m^r"
+        
+    if (secondKey = " ")
+        return "^" firstKey
         
     return ""
 }
@@ -371,7 +404,10 @@ GotoMapping(firstKey, secondKey)
         return "^+{down}"
     if (secondKey = "/") 
         return "^+{right}"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -389,7 +425,10 @@ BuildMapping(firstKey, secondKey)
         return "^b^d"
     if (secondKey = "w")
         return "^b^w"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -407,7 +446,10 @@ UnitTestMapping(firstKey, secondKey)
         return "^u^s"
     if (secondKey = "a")
         return "^u^a"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -443,7 +485,10 @@ SourceControlMapping(firstKey, secondKey)
         return "^k^v"
     if (secondKey = "e")
         return "^k^i"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -469,7 +514,10 @@ ProcessInspectionMapping(firstKey, secondKey)
         return "^d^c"
     if (secondKey = "b") 
         return "{F9}"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -510,6 +558,16 @@ NumericMapping(firstKey, secondKey)
         return "{^}"
     if (secondKey = "h") 
         return "{%}" 
+        
+    if (secondKey = "9") 
+        return "{(}" 
+    if (secondKey = "0") 
+        return "{)}" 
+        
+    if (secondKey = " ")
+        return " "
+        
+    return ""
 }
 
 CapitalVovelsMapping(firstKey, secondKey)
@@ -538,7 +596,10 @@ CapitalVovelsMapping(firstKey, secondKey)
         return "Ý"
     if (secondKey = "Y")
         return "Ý"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -568,7 +629,10 @@ VovelsMapping(firstKey, secondKey)
         return "ý" 
     if (secondKey = "Y")
         return "ý" 
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -606,7 +670,10 @@ CapitalConsonantsMapping(firstKey, secondKey)
         return "Ň"
     if (secondKey = "N") 
         return "Ň"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -646,7 +713,10 @@ ConsonantsMapping(firstKey, secondKey)
         return "ň"
     if (secondKey = "N") 
         return "ň"
-
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
@@ -806,6 +876,11 @@ ModificatorMapping(firstKey, secondKey, modificator)
         return modificator "{Enter}"
     if (secondKey = "{Delete}")
         return modificator "{Delete}"
+        
+    if (secondKey = " ")
+        return "^" firstKey
+        
+    return ""
 }
 
 WindowsMapping(firstKey, secondKey)
@@ -835,6 +910,9 @@ ControlShiftMapping(firstKey, secondKey)
 
 DefaultMapping(firstKey, secondKey)
 {
+    if (secondKey = " ")
+        return "^" firstKey
+        
     return ""
 }
 
