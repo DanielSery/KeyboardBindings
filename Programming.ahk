@@ -103,13 +103,13 @@ $+;::MapKey(";", ":", DefaultMapping)
 $/::MapKey("/", "/", DefaultMapping)
 $+?::MapKey("/", "?", DefaultMapping)
 
-$[::MapKey("[", "{Backspace}", WindowsMapping)
+$[::MapKey("[", "{[}", WindowsMapping)
 $+[::MapKey("[", "{{}", WindowsShiftMapping)
-$'::MapKey("`'", "{Enter}", ActionMapping)
-$+'::MapKey("`'", "{Enter}", ActionMapping)
+$'::MapKey("`'", "`'", ActionMapping)
+$+'::MapKey("`'", "`"", ActionMapping)
 
 $Space::MapKey(" ", " ", ControlMapping)
-$+Space::MapKey(" ", " ", ControlShiftMapping)
+$+Space::MapKey(" ", "{Enter}", ControlShiftMapping)
 $Enter::MapKey("Enter", "{Enter}", DefaultMapping)
 
 $-::MapKey("-", "-", DefaultMapping)
@@ -652,6 +652,29 @@ ConsonantsMapping(firstKey, secondKey)
 
 ModificatorMapping(firstKey, secondKey, modificator)
 {
+    if (secondKey = "1")
+        return modificator "1" 
+    if (secondKey = "2")
+        return modificator "2" 
+    if (secondKey = "3") 
+        return modificator "3" 
+    if (secondKey = "4") 
+        return modificator "4" 
+    if (secondKey = "5") 
+        return modificator "5"
+    if (secondKey = "6") 
+        return modificator "6"
+    if (secondKey = "7")
+        return modificator "7"
+    if (secondKey = "8")
+        return modificator "8"
+    if (secondKey = "9")
+        return modificator "9"
+    if (secondKey = "0")
+        return modificator "0"
+    if (secondKey = "-")
+        return modificator "-"
+        
     if (secondKey = "q")
         return modificator "q" 
     if (secondKey = "Q")
