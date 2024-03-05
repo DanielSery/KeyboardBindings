@@ -208,6 +208,9 @@ ActionMapping(firstKey, secondKey)
 
 MoveMapping(firstKey, secondKey)
 {
+    if (secondKey = "t") 
+        return "{Tab}" 
+        
     if (secondKey = "h") 
         return "^{left}" 
         
