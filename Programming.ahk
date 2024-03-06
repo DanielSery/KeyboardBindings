@@ -109,7 +109,7 @@ $'::MapKey("`'", "`'", ActionMapping)
 $+'::MapKey("`'", "`"", ActionMapping)
 
 $Space::MapKey(" ", " ", ControlMapping)
-$+Space::MapKey(" ", "{Enter}", ControlShiftMapping)
+$+Space::MapKey(" ", " ", ControlShiftMapping)
 $Enter::MapKey("Enter", "{Enter}", DefaultMapping)
 
 $-::MapKey("-", "-", DefaultMapping)
@@ -123,6 +123,8 @@ $+\::MapKey("`\", "`|", DefaultMapping)
 
 SpecialMapping(firstKey, secondKey)
 {
+    if (secondKey = "m")
+        return "="
     if (secondKey = "j") 
         return "(" 
     if (secondKey = "k") 
